@@ -17,6 +17,10 @@ p {
     color: red;
 }
 
+a {
+    color: pink;
+}
+
 /* class selector */
 .huge {
     font-size: xx-large;
@@ -41,4 +45,41 @@ input[placeholder] {
 
 input[placeholder="first_name"] {
     background-color: blueviolet;
+}
+
+/* pseudo selector */
+a:visited {
+    color: darkred;
+}
+
+a:hover {
+    color: lightblue;
+}
+
+p::first-letter {
+    font-weight: bold;
+}
+
+/* combined selectors */
+
+/* x AND y */
+p.huge {
+    text-decoration: line-through;
+}
+
+p.huge#hugep {
+    text-decoration: underline;
+}
+
+h2,
+h3 {
+    color: rgb(255, 224, 245);
+}
+
+form div input {
+    background-color: yellow;
+}
+
+form>div>input {
+    background-color: purple;
 }
