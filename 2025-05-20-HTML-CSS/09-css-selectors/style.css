@@ -1,0 +1,44 @@
+/* name selector */
+
+h1 {
+    color: green;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    border: 2px orange dashed;
+    height: 100%;
+}
+
+p {
+    color: red;
+}
+
+/* class selector */
+.huge {
+    font-size: xx-large;
+    border-radius: 16px;
+}
+
+.banana {
+    color: yellow;
+    border: 1px solid pink;
+    border-radius: 4px;
+}
+
+/* id selector */
+#my-special-paragrpah {
+    color: purple;
+}
+
+/* attribute selector */
+input[placeholder] {
+    background-color: aqua;
+}
+
+input[placeholder="first_name"] {
+    background-color: blueviolet;
+}
