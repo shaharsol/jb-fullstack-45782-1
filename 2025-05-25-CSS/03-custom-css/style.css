@@ -57,3 +57,9 @@ h2 {
 h2:hover {
     animation: MyLongAnimation 3s infinite alternate linear;
 }
+
+@media (max-width: 600px) {
+    h2 {
+        font-size: 48px;
+    }
+}
