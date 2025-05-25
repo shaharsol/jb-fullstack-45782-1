@@ -1,0 +1,52 @@
+html {
+    direction: rtl;
+}
+
+body {
+    background-image: url("https://images.thdstatic.com/productImages/e0de4409-2500-4157-a51a-a786b505c19d/svn/walnut-daltile-porcelain-tile-bk10624hd1pr-64_600.jpg");
+}
+
+h1 {
+    color: darkred;
+    text-align: center;
+}
+
+.welcome-text {
+    text-align: center;
+    color: darkgray;
+}
+
+input[type="text"],
+input[type="password"] {
+    background-color: yellow;
+}
+
+input[type="submit"] {
+    text-align: right;
+}
+
+table {
+    border: 1px solid black;
+}
+
+.left {
+    /* direction: ltr; */
+    text-align: left;
+}
+
+img {
+    /* width: 100px; */
+    height: 100px;
+    text-align: center;
+
+}
+
+#img-container,
+#copyrights {
+    text-align: center;
+}
+
+form {
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
