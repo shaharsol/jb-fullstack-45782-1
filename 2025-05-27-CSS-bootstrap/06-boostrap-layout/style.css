@@ -1,0 +1,6 @@
+.row>div {
+    border: 1px solid lightblue;
+    height: 50px;
+    text-align: center;
+    font-size: xx-large;
+}
