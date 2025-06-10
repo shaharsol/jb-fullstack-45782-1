@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+</head>
+
+<body>
+    <script>
+        // While
+
+        // let count = 1;
+        // while (count <= 10) {
+        //     document.write(count + "<br>");
+        //     // count = count + 1;
+        //     count++;
+        // }
+
+
+        let num = +prompt("Enter a number");
+        let newNum = 0;
+
+        while(num != 0){
+            newNum = newNum * 10 + num%10;
+            num = (num-num%10)/10;
+        }
+
+        document.write("The reversed number is: " + newNum);
+
+
+        // For
+        for(let i=1; i<=20; i++){
+            document.write("<br>i = " + i)
+        }
+
+
+        // nirg@jbh.co.il
+    </script>
+</body>
+
+</html>
