@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const index = +prompt('enter fibonnaci required index')
+        /*
+
+        0 1 1 2 3 5 8 
+
+
+        */
+
+        let previousPrevious = 0;
+        let previous = 1;
+        let current = previousPrevious + previous;
+
+        let count = 2;
+
+        while (count < index) {
+            
+            current = previousPrevious + previous;
+            previousPrevious = previous;
+            previous = current;
+            count = count + 1
+
+        }
+
+        console.log(`the fibonnaci number at index ${index} is ${current}`)
+
+
+    </script>
+</body>
+</html>

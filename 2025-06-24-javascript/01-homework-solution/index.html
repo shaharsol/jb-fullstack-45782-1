@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <script>
+        const name = prompt('please enter your name');
+        const income = +prompt('please enter your income');
+
+        let tax = 0;
+
+        let remainingIncome;
+        let currentStepIncome
+
+        // 1st step 23,000 10%
+        remainingIncome = income - 23000
+        if (remainingIncome > 0) currentStepIncome = 23000
+        else currentStepIncome = income
+
+        tax = tax + 0.1 * currentStepIncome
+
+        // 2nd step 23,000 20%
+        if (remainingIncome > 0) {
+            
+            if (remainingIncome - 23000 > 0) currentStepIncome = 23000
+            else currentStepIncome = remainingIncome
+
+            console.log(`second step, currentStepIncome is ${currentStepIncome}`)
+
+            tax = tax + 0.2 * currentStepIncome
+            remainingIncome = remainingIncome - 23000
+        } 
+
+        // 3rd step 74,000 30%
+        if (remainingIncome > 0) {
+            
+            if (remainingIncome - 74000 > 0) currentStepIncome = 74000
+            else currentStepIncome = remainingIncome
+
+            console.log(`second step, currentStepIncome is ${currentStepIncome}`)
+
+            tax = tax + 0.3 * currentStepIncome
+            remainingIncome = remainingIncome - 74000
+        } 
+
+        console.log(`hi ${name}, your tax is ${tax}`)
+
+
+
+    </script>
+    
+</body>
+</html>
