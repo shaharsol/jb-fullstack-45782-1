@@ -1,4 +1,4 @@
-const age = +prompt('enter your age')
+const age = +prompt("enter your age");
 
 let price;
 
@@ -10,5 +10,4 @@ let price;
 // boolean expression ? value for true : value for false
 price = age <= 18 ? 20 : 30;
 
-alert(`your ticket fee is ${price}`)
-
+alert(`your ticket fee is ${price}`);
