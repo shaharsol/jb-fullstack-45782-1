@@ -75,6 +75,10 @@ console.log(`dog age is ${dog.age}`);
 
 // a special loop syntax to iterate properties:
 // for-in
-for (const property in dog) {
-  console.log(property);
+for (const prop in dog) {
+  console.log(`${prop}: ${dog[prop]}`);
 }
+
+/*
+1: p = name, dog[p] => dog['name']
+*/
