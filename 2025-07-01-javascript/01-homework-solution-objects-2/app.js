@@ -29,3 +29,5 @@ for (const prop in customer) {
     }
   } else console.log(`${prop}: ${customer[prop]}`);
 }
+
+console.log(customer);
