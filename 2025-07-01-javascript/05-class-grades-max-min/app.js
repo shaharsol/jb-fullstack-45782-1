@@ -20,7 +20,8 @@ const students = [ido, lior, itay];
 
 let max = 0;
 let min = 100;
-let maxStudent, minStudent;
+let maxStudent;
+let minStudent;
 
 for (const student of students) {
   for (const grade of student.grades) {

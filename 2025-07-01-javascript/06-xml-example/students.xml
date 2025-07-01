@@ -1,0 +1,11 @@
+<students>
+    <student>
+        <name>Ido</name>
+        <city>tel aviv</city>
+        <grades>
+            <grade>98</grade>
+            <grade>87</grade>
+            <grade>78</grade>
+        </grades>
+    </student>
+</students>
