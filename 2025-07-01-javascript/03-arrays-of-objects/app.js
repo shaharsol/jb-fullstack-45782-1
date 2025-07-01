@@ -3,6 +3,7 @@ const ido = {
   gender: "male",
   age: 20,
   city: "rosh haayin",
+  grades: [90, 95, 88]
 };
 
 const lior = {
