@@ -30,3 +30,9 @@ console.log("====================");
 for (const grade of grades) {
   console.log(grade);
 }
+
+const names = ['Dean', 'Yarden', 'Michael']
+for (const name of names) {
+  console.log(name);
+}
+
