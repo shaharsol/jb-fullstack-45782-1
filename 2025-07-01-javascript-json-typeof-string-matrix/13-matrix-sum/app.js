@@ -12,4 +12,5 @@ for (const studentGrades of grades) {
     sum += grade;
   }
 }
+
 console.log(sum);

@@ -53,3 +53,4 @@ console.log(message.lastIndexOf("z"));
 // substring
 const veryLongMessage = "Welcome to Jamaica man, we can have a lot of fun";
 console.log(veryLongMessage.substring(11, 20));
+console.log(veryLongMessage.substring(11)); // till the end of the string

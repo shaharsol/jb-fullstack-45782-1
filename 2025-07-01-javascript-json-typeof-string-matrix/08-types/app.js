@@ -46,3 +46,5 @@ const studentsJSON = `
 
 console.log(typeof studentsJSON);
 console.log(typeof JSON.parse(studentsJSON));
+
+const someBoolean = "false";
