@@ -1,23 +1,13 @@
-function printSeparatorLine() {
-  document.write("<br>");
-  document.write("******");
-  document.write("<br>");
+const firstName = prompt("enter first name");
+const lastName = prompt("enter last name");
+
+function printStyledFirstName() {
+  console.log(`${firstName[0].toUpperCase()}${firstName.substring(1)}`);
 }
 
-function printEytan() {
-  document.write("eytan");
-  printSeparatorLine();
-  function makeQuestionMark() {
-    document.write("?????");
-  }
-  makeQuestionMark();
-  document.write("eytan2");
+function printStyledLastName() {
+  console.log(`${lastName[0].toUpperCase()}${lastName.substring(1)}`);
 }
 
-printSeparatorLine();
-printSeparatorLine();
-printSeparatorLine();
-
-for (let i = 1; i <= 10; i++) printSeparatorLine();
-
-printEytan();
+printStyledFirstName();
+printStyledLastName();
