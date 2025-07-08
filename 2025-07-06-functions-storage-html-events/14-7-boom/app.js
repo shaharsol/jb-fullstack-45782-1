@@ -23,3 +23,5 @@ function getUserInput() {
 function userWantsToContinue(input) {
   return input !== 0;
 }
+
+// a new comment
