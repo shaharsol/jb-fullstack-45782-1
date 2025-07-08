@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="app.js"></script>
+    <script defer src="app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <h2>New Car Form</h2>
-    <form onsubmit="addCar(event)">
+    <form id="car-form" onsubmit="addCar(event)">
         <label for="car-name">Car Name</label>
         <input id="car-name" required>
         <br><br>
