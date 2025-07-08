@@ -9,4 +9,6 @@ function addFruit() {
   list.style.backgroundColor = "red";
 
   document.getElementById("fruit").value = "";
+    document.getElementById("fruit")
+
 }
