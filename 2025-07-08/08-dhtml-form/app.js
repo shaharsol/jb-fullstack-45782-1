@@ -1,3 +1,5 @@
+const CARS_KEY_NAME = "cars";
+
 function addCar(event) {
   event.preventDefault(); // prevent form submission
   const data = collectDataFromForm();
@@ -23,8 +25,8 @@ function collectDataFromForm() {
 
 function generateTR(data) {
   const newTR = `
-        <tr style="background-color: ${data.color};">
-            <td>${data.name}</td>
+        <tr >
+            <td style="background-color: ${data.color};">${data.name}</td>
             <td>${data.engineVolume}</td>
             <td><img class="car-pic"
                     src="${data.pic}">
@@ -39,7 +41,7 @@ function injectTRToDOM(newTR) {
 }
 
 function loadCarsFromStorage() {
-  const carsJSON = localStorage.getItem("cars");
+  const carsJSON = localStorage.getItem(CARS_KEY_NAME);
   if (carsJSON) {
     const cars = JSON.parse(carsJSON);
     for (const car of cars) {
@@ -50,10 +52,10 @@ function loadCarsFromStorage() {
 }
 
 function saveCarToLocalStorage(car) {
-  const carsJSON = localStorage.getItem("cars") || "[]";
+  const carsJSON = localStorage.getItem(CARS_KEY_NAME) || "[]";
   const cars = JSON.parse(carsJSON);
   cars.push(car);
-  localStorage.setItem("cars", JSON.stringify(cars));
+  localStorage.setItem(CARS_KEY_NAME, JSON.stringify(cars));
 }
 
 function clearForm() {

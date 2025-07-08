@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script defer src="app.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,27 +14,27 @@
 
     <h2>New Car Form</h2>
     <form id="car-form" onsubmit="addCar(event)">
-        <label for="car-name">Car Name</label>
-        <input id="car-name" required>
+        <label class="form-label" for="car-name">Car Name</label>
+        <input class="form-control" id="car-name" required>
         <br><br>
 
-        <label for="engine-volume">Engine Volume</label>
-        <input type="number" id="engine-volume" required>
+        <label class="form-label" for="engine-volume">Engine Volume</label>
+        <input class="form-control" type="number" id="engine-volume" required>
         <br><br>
 
-        <label for="car-color">Car Color</label>
-        <input type="color" id="car-color" required>
+        <label class="form-label" for="car-color">Car Color</label>
+        <input class="form-control" type="color" id="car-color" required>
         <br><br>
 
-        <label for="car-pic">Photo URL</label>
-        <input type="url" id="car-pic" required>
+        <label class="form-label" for="car-pic">Photo URL</label>
+        <input class="form-control" type="url" id="car-pic" required>
         <br><br>
 
         <button>Add Car</button>
 
     </form>
 
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Car Name</th>
