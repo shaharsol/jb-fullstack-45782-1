@@ -1,0 +1,32 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <form onsubmit="return validate(event)">
+        <label>email</label>
+        <input id="email" type="email" name="email" required>
+        <p id="email-error"></p>
+        <br><br>
+
+        <label>password</label>
+        <input type="password" id="password" name="password" required minlength="6">
+        <p id="password-error"></p>
+        <br><br>
+
+        <label>age</label>
+        <input type="number" name="age" required min="0">
+        <br><br>
+
+        <button>submit</button>
+
+    </form>
+</body>
+
+</html>
