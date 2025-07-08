@@ -41,3 +41,14 @@ function getMax(a, b) {
 }
 
 console.log(getMax(1, 2));
+
+function getPriceIncludingVAT(price) {
+  return price * 1.18;
+}
+
+function getPriceIncludingVAT(price) {
+  return {
+    originalPrice: price,
+    priceIncludingVAT: price * 1.18,
+  };
+}
