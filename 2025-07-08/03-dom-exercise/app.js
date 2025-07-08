@@ -5,4 +5,5 @@ function change() {
 
   paragraph.style.backgroundColor = colorInput.value;
   paragraph.innerText = textInput.value;
+  //   paragraph.innerHTML = textInput.value;
 }
