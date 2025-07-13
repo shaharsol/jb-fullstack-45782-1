@@ -30,7 +30,7 @@ function generateTR(data, id) {
   const { color, name, engineVolume, pic } = data;
 
   const newTR = `
-        <tr >
+        <tr>
             <td style="background-color: ${color};">${name}</td>
             <td>${engineVolume}</td>
             <td><img class="car-pic"
