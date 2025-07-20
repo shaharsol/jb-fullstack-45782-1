@@ -35,3 +35,16 @@ const multiply = (a, b) => a * b
 
 somePower(4, console.log)
 
+function power2(num) {
+    return num ** 2
+}
+
+const power2 = (num) => {
+    return num ** 2
+}
+
+const power2 = num => {
+    return num ** 2
+}
+
+const power2 = num => num ** 2
