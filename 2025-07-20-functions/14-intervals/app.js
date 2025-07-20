@@ -1,11 +1,3 @@
-let didRespond = false;
-
-navigator.geolocation.getCurrentPosition(p => {
-    didRespond = true
-}, p => {
-    didRespond = true
-})
-
-setTimeout(() => {
-    console.log(didRespond ? 'responded' : 'did not repond')
+setInterval(() => {
+    console.log(`interval occured at ${(new Date()).toLocaleString()}`)
 }, 5 * 1000)
