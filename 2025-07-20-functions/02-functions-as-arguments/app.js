@@ -1,25 +1,14 @@
-const name = 'Shahar'
-console.log(name)
-
-
-function showGrade(grade) {
-    console.log(`your grade is ${grade}`)
-    return true
+function showSomething(something) {
+    console.log(`something is ${something}`)
+    console.log(`something type is ${typeof something}`)
 }
 
-const myGrade = 96;
-console.log(myGrade)
 
-console.log(showGrade)
 
-console.log(showGrade(myGrade))
+const name = 'Shahar'
 
-console.log(typeof showGrade)
-console.log(typeof showGrade(myGrade))
+// showSomething(name)
+// showSomething(96)
 
-const someValue = showGrade(60)
-console.log(someValue)
-
-const someVariable = showGrade
-console.log(someVariable)
-someVariable(100)
+showSomething(showSomething)
+// showSomething(console.log)
