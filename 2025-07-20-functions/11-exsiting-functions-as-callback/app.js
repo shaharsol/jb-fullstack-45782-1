@@ -13,7 +13,7 @@ const showUserLocation = () => {
         // michaelFunc,
         console.error
     )
-    console.log(result)
+    console.log(result) // result will always be undefined
     console.log('immediately after invoking getCurrentPosition')
 
 }
