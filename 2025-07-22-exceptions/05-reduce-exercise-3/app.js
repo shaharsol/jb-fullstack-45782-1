@@ -231,25 +231,17 @@ const users = [
     }
 ]
 
-// reducing is the operation of taking an array, and extracting a *single* value from it.
-
-
-// reducing with native JavaScript
-
-let max = 0;
+let northernUsers = []
 for (const user of users) {
-    max = +user.address.geo.lat > max ? +user.address.geo.lat : max
+    if (+user.address.geo.lat > 0) northernUsers.push(user)
 }
-console.log(max)
 
-// reducing the hof way
-const maxValue = users.reduce(
-    (cumulative, { address: { geo: { lat } } }) => +lat > cumulative ? +lat : cumulative, 
-    0
-)
-console.log(maxValue)
+console.log(northernUsers)
 
-
-
-
-
+console.log(users.reduce((cumulative, user) => {
+    const { address: { geo: { lat } } } = user
+    if (+lat > 0) {
+        cumulative.push(user)
+    }
+    return cumulative
+}, [])) 
