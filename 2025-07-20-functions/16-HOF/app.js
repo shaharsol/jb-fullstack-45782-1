@@ -84,6 +84,8 @@ const mapGrades = students => {
 console.log(mapGrades(students))
 
 // HOF map:
+const result = students.map(currentStudent => currentStudent.grade)
+console.log(result)
 console.log(students.map(currentStudent => currentStudent.grade))
 console.log(students.map(currentStudent => currentStudent.name))
 console.log(students.map(currentStudent => { return { name: currentStudent.name, age: currentStudent.age } }))
@@ -99,4 +101,6 @@ const loopStudents = students => {
 loopStudents(students)
 
 // HOF just a loop
-students.forEach((student, i) => console.log(student))
+students.forEach((student, i) => console.log(student, i))
+students.forEach(console.log)
+
