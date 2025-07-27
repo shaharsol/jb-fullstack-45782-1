@@ -11,7 +11,10 @@
 
     const showUser = () => {
         console.log('function started')
-        console.log(user)
+        setTimeout(() => {
+            console.log(user)
+        }, 3000)
+
         console.log('function finished')
     }
 
@@ -22,15 +25,18 @@
     })
 
     //////////////////////////////////
-    const getUser = () => {
+    const getUser = (callback) => {
         console.log('function started')
+        setTimeout(() => {
+            callback(user) // console.log(user)
+        }, 3000)
         console.log('function finished')
-        return user
+        return 'Lior'
     }
 
     document.getElementById('get-user').addEventListener('click', () => {
         console.log('event started')
-        const user = getUser()
+        const user = getUser(console.log)
         console.log(user)
         console.log('event finished')
 
