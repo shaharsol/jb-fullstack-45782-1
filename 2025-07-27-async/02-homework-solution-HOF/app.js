@@ -41,6 +41,44 @@
     */
 
 
+    console.log(
+        users.reduce((cumulative, { weight, address: { coordinates: { lat } } }) => {
+            const hemisphere = cumulative.find(({ id }) => id === (lat >= 0 ? 'north' : 'south'))
+            hemisphere.sum += weight
+            hemisphere.count++
+            return cumulative
+        }, [
+            {
+                id: 'north',
+                sum: 0,
+                count: 0,
+            },
+            {
+                id: 'south',
+                sum: 0,
+                count: 0,
+            }
+        ]).map(({ id, sum, count }) => ({
+            id,
+            average: sum / count
+        }))
+    )
+
+
+    /*
+    [
+        {
+            id: 'north',
+            average: 36.66
+        },
+        {
+            id: 'south',
+            average: 66.33
+        }
+    ]
+    */
+
+
 
 
 
