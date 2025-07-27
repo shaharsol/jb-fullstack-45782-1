@@ -31,7 +31,7 @@
     document.getElementById('get-user').addEventListener('click', () => {
         console.log('event started')
         const user = getUser()
-        console.log(user)
+        console.log
         console.log('event finished')
 
     })

@@ -23,6 +23,17 @@
         } catch (err) {
             console.log(`error is ${err.message}`)
         }
+
+
+
+
+
+
+
+
+
+
+        
     })
 
     document.getElementById('display-color-button').addEventListener('click', () => {
