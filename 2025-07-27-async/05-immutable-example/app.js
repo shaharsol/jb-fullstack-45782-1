@@ -8,22 +8,27 @@
         users.map(({ firstName, lastName }) => `${firstName} ${lastName}`)
     )
 
+    const liorFunc = (cumulative, { address: { state } }) => {
+        const result = [...cumulative]
+        // if we want to modify cumulative we need to CLONE it
+        if (!result.find(currentState => state === currentState)) result.push(state)
+        return result
+    }
+
     console.log(
-        users.reduce((cumulative, { address: { state } }) => {
-            if (!cumulative.find(currentState => state === currentState)) cumulative.push(state)
-            return cumulative
-        }, [])
+        users.reduce(liorFunc, [])
     )
 
     console.log(
         users.reduce((cumulative, { eyeColor }) => {
-            const currentEyeColor = cumulative.find(({ color }) => color === eyeColor)
-            if (!currentEyeColor) cumulative.push({
+            const result = [...cumulative]
+            const currentEyeColor = result.find(({ color }) => color === eyeColor)
+            if (!currentEyeColor) result.push({
                 color: eyeColor,
                 count: 1
             })
             else currentEyeColor.count += 1
-            return cumulative
+            return result
         }, [])
     )
 
@@ -43,10 +48,11 @@
 
     console.log(
         users.reduce((cumulative, { weight, address: { coordinates: { lat } } }) => {
-            const hemisphere = cumulative.find(({ id }) => id === (lat >= 0 ? 'north' : 'south'))
+            const result = [...cumulative]
+            const hemisphere = result.find(({ id }) => id === (lat >= 0 ? 'north' : 'south'))
             hemisphere.sum += weight
             hemisphere.count++
-            return cumulative
+            return result
         }, [
             {
                 id: 'north',
