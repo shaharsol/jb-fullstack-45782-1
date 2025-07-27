@@ -2,44 +2,80 @@
 
 (() => {
 
-    const getAsyncRandomNumber = (max, callback) => {
+    // the old callback hell way:
+
+    const getAsyncRandomNumber = (max, successCallback, errorCallback) => {
         // console.log(`getAsyncRandomNumber was invoked with max: ${max}`)
         setTimeout(() => {
             const random = Math.random() * max
             console.log(`got max ${max}`)
-            callback(random)
+            if (random > max) errorCallback('internal server error');
+            else successCallback(random)
         }, 1000)
     }
 
 
-    getAsyncRandomNumber(100, nextMax => {
-        getAsyncRandomNumber(nextMax, nextMax2 => {
-            getAsyncRandomNumber(nextMax2, nextMax3 => {
-                getAsyncRandomNumber(nextMax3, nextMax4 => {
-                    getAsyncRandomNumber(nextMax4, nextMax => {
-                        getAsyncRandomNumber(nextMax, nextMax => {
-                            getAsyncRandomNumber(nextMax, nextMax => {
-                                getAsyncRandomNumber(nextMax, nextMax => {
-                                    getAsyncRandomNumber(nextMax, nextMax => {
-                                        getAsyncRandomNumber(nextMax, nextMax => {
-                                            console.log(nextMax)
-                                        })
-                                    })
-                                })
-                            })
-                        })
-                    })
-                })
-            })
-        })
-    })
 
-
-
-    // let max = 100;
-    // for (let i = 1; i <= 10; i++) {
-    //     getAsyncRandomNumber(max, result => {
-    //         max = result
+    // callback hell
+    // getAsyncRandomNumber(100, nextMax => {
+    //     getAsyncRandomNumber(nextMax, nextMax2 => {
+    //         getAsyncRandomNumber(nextMax2, nextMax3 => {
+    //             getAsyncRandomNumber(nextMax3, nextMax4 => {
+    //                 getAsyncRandomNumber(nextMax4, nextMax => {
+    //                     getAsyncRandomNumber(nextMax, nextMax => {
+    //                         getAsyncRandomNumber(nextMax, nextMax => {
+    //                             getAsyncRandomNumber(nextMax, nextMax => {
+    //                                 getAsyncRandomNumber(nextMax, nextMax => {
+    //                                     getAsyncRandomNumber(nextMax, nextMax => {
+    //                                         console.log(nextMax)
+    //                                     })
+    //                                 })
+    //                             })
+    //                         })
+    //                     })
+    //                 })
+    //             })
+    //         })
     //     })
-    // }
+    // })
+
+    // the new promise way:
+
+    // promise advantage:
+    // 1. formalize the success and error callback into resolve, reject
+    // 2. ensure only one reject or resolve will be invoked and no more
+    // 3. chaining thens (thenification)
+    const getAsyncRandomNumberPromise = (max) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const random = Math.random() * max
+                console.log(`got max ${max}`)
+                if (random > max) reject('internal server error');
+                else resolve(random)
+            }, 5000)
+        })
+    }
+
+    // instead of callback hell, we get THENIFICATION
+    // when we use `return` from a `then` function, we actually return a new promise
+
+    getAsyncRandomNumberPromise(100).then(random => {// inside then we implement the successCallback
+        console.log(`promise random is ${random}`)
+        return getAsyncRandomNumberPromise(random)
+    }).then(random => {
+        console.log(`promise random is ${random}`)
+        return getAsyncRandomNumberPromise(random)
+    }).then(random => {
+        console.log(`promise random is ${random}`)
+        return getAsyncRandomNumberPromise(random)
+    }).then(random => {
+        console.log(`promise random is ${random}`)
+        return getAsyncRandomNumberPromise(random)
+    }).catch(err => {
+        console.log(`there was an error : ${err}`)
+    }).finally(() => {
+        console.log('in finally')
+    })
+    // console.log(p)
+
 })()
