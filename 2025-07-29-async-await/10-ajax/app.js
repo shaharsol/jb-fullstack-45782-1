@@ -4,16 +4,16 @@
 
     const getData = url => fetch(url).then(response => response.json())
 
-    // const getData = async url => {
-    //     const response = await fetch(url)
-    //     const data = await response.json()
-    //     return data
-    // }
+    // getData (input)
+    const { users } = await getData('https://dummyjson.com/users')
 
-    // const response = await fetch('https://dummyjson.com/users')
-    // const data = await response.json()
+    // generateHTML (process input)
+    const html = users
+        .map(({ firstName, lastName }) => `<li>${firstName} ${lastName}</li>`)
+        // .reduce((cumulative, current) => `${cumulative}${current}`, '')
+        .join('')
 
-    const data = await getData('https://dummyjson.com/users')
+    // renderHTML (generate output)
+    document.getElementById('users-list').innerHTML = html
 
-    console.log(data)
 })()
