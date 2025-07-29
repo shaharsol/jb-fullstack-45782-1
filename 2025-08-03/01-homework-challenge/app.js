@@ -19,6 +19,8 @@
     // how i would use them:
     power(console.log, console.log, 4) // 16
     sqrt(console.log, console.log, 4) // 4
+    power(console.log, console.log, 49) // boom
+    sqrt(console.log, console.log, 49) // boom
 
     // but i want promises...
     // so i promisify:
@@ -31,11 +33,18 @@
     })
 
     // and i try to use them:
-    const calc1 = await powerPromisified(4)
-    const calc2 = await sqrtPromisified(4)
+    try {
+        const results = await Promise.allSettled([
+            powerPromisified(4),
+            sqrtPromisified(4),
+            powerPromisified(49),
+            sqrtPromisified(49)
+        ])
+        console.log(results)
 
-    console.log(calc1) // 16
-    console.log(calc2) // 4
+    } catch (err) {
+        console.log(err)
+    }
 
     // now i feel a little victory...
     // however something bothers me...
