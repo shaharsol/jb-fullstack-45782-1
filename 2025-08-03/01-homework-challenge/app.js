@@ -40,7 +40,15 @@
             powerPromisified(49),
             sqrtPromisified(49)
         ])
-        console.log(results)
+        console.log(results) 
+        /* 
+            [
+                {status: 'fulfilled', value: 16},
+                {status: 'fulfilled', value: 2},
+                {status: 'rejected', reason: 'boom'},
+                {status: 'rejected', reason: 'boom'}
+            ]
+        */
 
     } catch (err) {
         console.log(err)
