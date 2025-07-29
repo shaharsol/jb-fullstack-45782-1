@@ -1,6 +1,6 @@
 "use strict";
 
-(() => {
+(async () => {
 
     // the new promise way:
 
@@ -15,30 +15,50 @@
                 console.log(`got max ${max}`)
                 if (random > max) reject('internal server error');
                 else resolve(random)
-            }, 5000)
+            }, 1 * 1000)
         })
     }
 
     // instead of callback hell, we get THENIFICATION
     // when we use `return` from a `then` function, we actually return a new promise
 
-    getAsyncRandomNumberPromise(100).then(random => {// inside then we implement the successCallback
-        console.log(`promise random is ${random}`)
-        return getAsyncRandomNumberPromise(random)
-    }).then(random => {
-        console.log(`promise random is ${random}`)
-        return getAsyncRandomNumberPromise(random)
-    }).then(random => {
-        console.log(`promise random is ${random}`)
-        return getAsyncRandomNumberPromise(random)
-    }).then(random => {
-        console.log(`promise random is ${random}`)
-        return getAsyncRandomNumberPromise(random)
-    }).catch(err => {
-        console.log(`there was an error : ${err}`)
-    }).finally(() => {
-        console.log('in finally')
-    })
+    // getAsyncRandomNumberPromise(100).then(random => {// inside then we implement the successCallback
+    //     console.log(`promise random is ${random}`)
+    //     return getAsyncRandomNumberPromise(random)
+    // }).then(random => {
+    //     console.log(`promise random is ${random}`)
+    //     return getAsyncRandomNumberPromise(random)
+    // }).then(random => {
+    //     console.log(`promise random is ${random}`)
+    //     return getAsyncRandomNumberPromise(random)
+    // }).then(random => {
+    //     console.log(`promise random is ${random}`)
+    //     return getAsyncRandomNumberPromise(random)
+    // }).catch(err => {
+    //     console.log(`there was an error : ${err}`)
+    // }).finally(() => {
+    //     console.log('in finally')
+    // })
     // console.log(p)
+
+
+    // const exampleFunc = num => num ** 2
+    // const exampleFunc = async num => num ** 2
+
+    // console.log(exampleFunc(4))
+
+
+    try {
+        let random = await getAsyncRandomNumberPromise(100)
+        random = await getAsyncRandomNumberPromise(random)
+        random = await getAsyncRandomNumberPromise(random)
+        random = await getAsyncRandomNumberPromise(random)
+        random = await getAsyncRandomNumberPromise(random)
+        console.log(random)
+    } catch (err) {
+        console.log(err)
+    } finally {
+        console.log('in finally ')
+    }
 
 })()
