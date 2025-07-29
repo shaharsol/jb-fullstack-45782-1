@@ -35,22 +35,32 @@
     // getNumberOfCandles(0, console.log, console.log)
 
     // promise version:
-    const getNumberOfCandles = (hanukkahSerialDay) => {
+    const getNumberOfCandles = async (hanukkahSerialDay) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (hanukkahSerialDay > 8) reject('max day is 8')
                 if (hanukkahSerialDay < 1) reject('min day is 1')
                 resolve(hanukkahSerialDay + 1)
-            }, 1 * 1000)
+            }, 1 * 3000)
         })
     }
 
-    Promise.allSettled([
-        getNumberOfCandles(7),
-        getNumberOfCandles(9),
-        getNumberOfCandles(0),
-    ])
-        .then(console.log)
-        .catch(console.error)
+    // Promise.all([1, 2, 3, 4, 5, 6, 7, 8].map(current => getNumberOfCandles(current)))
+    // Promise.all([1, 2, 3, 4, 5, 6, 7, 8].map(getNumberOfCandles))
+    //     .then(results => {
+    //         const total = results.reduce((cumulative, current) => cumulative + current, 0)
+    //         console.log(`number of candles in hannukah: ${total}`)
+    //     })
+    //     .catch(console.error)
+
+    // async/await:
+    try {
+        const results = await Promise.all([1, 2, 3, 4, 5, 6, 7, 8].map(getNumberOfCandles))
+        const total = results.reduce((cumulative, current) => cumulative + current, 0)
+        console.log(`number of candles in hannukah: ${total}`)
+    } catch (err) {
+        console.error(err)
+    }
+
 
 })()
