@@ -1,7 +1,7 @@
 "use strict";
 
 (async() => {
-    // async callback functions
+    // lets say i have these async callback functions
     const power = (successCallback, errorCallback, num) => {
         setTimeout(() => {
             if (num % 7 === 0) return errorCallback('boom')
@@ -40,7 +40,7 @@
     // now i feel a little victory...
     // however something bothers me...
     // 1. what bothers me? imagine you get a PR and you do a code review, which very important
-    //      principle is broken?
+    //      principle is broken? look at lines 25-31.
     // 2. solve it
     // 3. let's say i have a function 
     const sum = (successCallback, errorCallback, a, b) => {
@@ -49,7 +49,7 @@
             return successCallback(a + b)    
         }, 0)
     }
-    //      did the solution you gave in #2 still works?
+    //      did the solution you gave in #2 still works? try it
     // 4. make it work. 
     //      a. clue: you don't have all the knowledge required to solve this bullet
     //          however, there's only one tiny bit missing. google "...args"
