@@ -57,7 +57,7 @@
     // now i feel a little victory...
     // however something bothers me...
     // 1. what bothers me? imagine you get a PR and you do a code review, which very important
-    //      principle is broken? look at lines 25-31.
+    //      principle is broken? look at lines 27-33.
     // 2. solve it
     // 3. let's say i have a function 
     const sum = (successCallback, errorCallback, a, b) => {
