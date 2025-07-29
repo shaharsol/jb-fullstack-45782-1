@@ -18,7 +18,7 @@
 
     // how i would use them:
     power(console.log, console.log, 4) // 16
-    sqrt(console.log, console.log, 4) // 4
+    sqrt(console.log, console.log, 4) // 2
     power(console.log, console.log, 49) // boom
     sqrt(console.log, console.log, 49) // boom
 
