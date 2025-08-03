@@ -43,7 +43,7 @@
 
     console.log(
         users.reduce((cumulative, { weight, address: { coordinates: { lat } } }) => {
-            const hemisphere = cumulative.find(({ id }) => id === (lat >= 0 ? 'north' : 'south'))
+            const hemisphere = cumulative.find(({ id }) => id === (lat >= 0 ? 'north' : 'south')) // if the cumulative array is of constant size, then it is O(1)
             hemisphere.sum += weight
             hemisphere.count++
             return cumulative
