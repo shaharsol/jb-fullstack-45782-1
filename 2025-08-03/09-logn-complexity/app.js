@@ -18,7 +18,7 @@
     // const numbers = [1, 9, 17, 25, 33, 49, 51, 66, 72, 82, 95] // sorted array
     const searchSortedArray = (array, search) => {
         let startIndex = 0
-        let finishIndex = array.length
+        let finishIndex = array.length // O(1)
 
         do {
             let currentIndex = Math.floor((startIndex + finishIndex) / 2)
