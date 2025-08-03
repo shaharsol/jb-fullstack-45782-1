@@ -23,9 +23,27 @@
 
     const getAverageWeight = users => users.reduce((cumulative, { weight }) => cumulative + weight, 0) / users.length
 
+    const generateRolesHTML = users => users.reduce((cumulative, { role }) => {
+        const currentRole = cumulative.find(({ theRole }) => theRole === role)
+        if (!currentRole) cumulative.push({
+            theRole: role,
+            count: 1
+        })
+        else currentRole.count += 1
+        return cumulative
+    }, []).map(({ theRole, count }) => `
+        <tr>
+            <td>${theRole}</td>
+            <td>${count}</td>
+        </tr>
+    `)
+
     const generateStatsHtml = users => `
         <p>total: ${users.length}</p>
         <p>average weight: ${getAverageWeight(users)}</p>
+        <table>
+            ${generateRolesHTML(users)}
+        </table>
     `
 
     // renderHTML (generate output)
