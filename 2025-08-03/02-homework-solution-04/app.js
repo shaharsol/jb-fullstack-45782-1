@@ -34,8 +34,10 @@
     `
 
     // renderHTML (generate output)
-    const renderUsersHTML = html => document.getElementById('users-select').innerHTML = html
-    const renderUserHTML = html => document.getElementById('user-details').innerHTML = html
+    const renderHTML = (html, target) => document.getElementById(target).innerHTML = html
+
+    const renderUsersHTML = html => renderHTML(html, 'users-select')
+    const renderUserHTML = html => renderHTML(html, 'user-details')
 
 
 
