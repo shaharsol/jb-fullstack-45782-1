@@ -47,6 +47,10 @@
 
     // console.log(exampleFunc(4))
 
+    const a = someFunction()
+    const b = await someFunction()
+    const c = someFunction()
+
 
     try {
         let random = await getAsyncRandomNumberPromise(100)
