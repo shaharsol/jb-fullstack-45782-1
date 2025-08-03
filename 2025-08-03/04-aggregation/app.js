@@ -21,8 +21,11 @@
         return html
     }
 
+    const getAverageWeight = users => users.reduce((cumulative, { weight }) => cumulative + weight, 0) / users.length
+
     const generateStatsHtml = users => `
         <p>total: ${users.length}</p>
+        <p>average weight: ${getAverageWeight(users)}</p>
     `
 
     // renderHTML (generate output)
