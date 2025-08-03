@@ -21,8 +21,7 @@
                 else cumulative[eyeColor] = 1
                 return cumulative
             }, {})
-        )
-            .map(([color, count]) => ({ color, count }))
+        ).map(([color, count]) => ({ color, count }))
 
 
     )
