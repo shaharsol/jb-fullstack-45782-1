@@ -1,5 +1,5 @@
 "use strict";
-(() => {
+(async () => {
     // example 1
     let x = 200;
     let y = 2;
@@ -14,6 +14,8 @@
     // example 3
     function multiply(a, b) {
         const result = a * b;
+        return result;
     }
     console.log(multiply(2, 3));
+    const users = await fetch('some url');
 })();

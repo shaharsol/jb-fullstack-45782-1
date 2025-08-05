@@ -2,6 +2,6 @@
     "compilerOptions": {
         "outDir": "js",
         "noEmitOnError": true,
-        "target": "es6"
+        "target": "es2024"
     }
 }
