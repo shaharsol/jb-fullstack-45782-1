@@ -1,1 +1,7 @@
-{}
+{
+    "compilerOptions": {
+        "outDir": "js",
+        "noEmitOnError": true,
+        "target": "es6"
+    }
+}

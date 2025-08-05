@@ -3,7 +3,7 @@
 (() => {
 
     // example 1
-    let x = 1
+    let x = 200
     let y: number = 2
 
     // x = '1'
@@ -24,6 +24,6 @@
         const result = a * b
     }
 
-    console.log(multiply(2, 3))
+    console.log(multiply(2, 3));
 
 })()
