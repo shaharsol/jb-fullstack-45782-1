@@ -23,6 +23,34 @@
     console.log([90, 96, 72])
     console.log(`the grade 96 is present in the Set? ${myGrades.has(96)}`)
 
-    // 
+    // here is an array:
+    const grades = [78, 82, 88, 88, 90, 92, 92, 96, 96, 96, 96, 99]
+
+    // create an array from grades with only uniques values
+    // [78, 82, 88, 88, 90, 92, 92, 96, 96, 96, 96, 99]
+    // [78, 82, 88, 90, 92, 96, 99]
+    console.log(
+        grades.reduce((cumulative, current) => {
+            const cum = [...cumulative]
+
+            const isInArray = cum.includes(current)
+            if (!isInArray) cum.push(current)
+
+            return cum
+        }, [])
+
+    )
+
+    // use Set to do the same in a single command!
+    // 2 clues:
+    // 1. a Set can be initiated with an array e.g. const mySet = new Set(myArray)
+    // 2. ...
+
+
+    const uniqueGrades = [...new Set(grades)] // the elegant way to unique an array in javascript
+
+    console.log(uniqueGrades)
+
+
 
 })()
