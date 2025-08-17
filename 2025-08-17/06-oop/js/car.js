@@ -1,11 +1,13 @@
-export default class Car {
+class Car {
     // methods (e.g. function)
     ignite() {
         console.log('car igniting...');
         // this.engineNumber = 123
     }
+    getPrice() {
+        return this.price * Car.vat;
+    }
     constructor(make, model, engineVolume, yearModel, price) {
-        this.vat = 1.18;
         this.make = make; // this, will always refer to the object that owns the function
         this.model = model;
         this.engineVolume = engineVolume;
@@ -14,3 +16,5 @@ export default class Car {
         this.price = price;
     }
 }
+Car.vat = 1.18;
+export default Car;

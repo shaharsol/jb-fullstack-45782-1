@@ -25,6 +25,7 @@ console.log(mazda5.engineNumber);
 console.log(micra.engineNumber);
 // micra.engineNumber = 123
 console.log(micra.engineNumber);
-console.log(vitara.price * vitara.vat);
+console.log(vitara.price * Car.vat);
+console.log(vitara.getPrice());
 // new Date()
 // new Promise()
