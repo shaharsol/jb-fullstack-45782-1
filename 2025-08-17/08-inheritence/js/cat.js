@@ -1,10 +1,10 @@
-import Animal from "./animal.js";
-export default class Cat extends Animal {
+import Mamal from "./mamal.js";
+export default class Cat extends Mamal {
     sayMiau() {
         console.log('miau');
     }
-    constructor(weight, soulsLeft) {
-        super(weight); // call the constructor of the class i inherited from
+    constructor(weight, numberOfNipples, soulsLeft) {
+        super(weight, numberOfNipples); // call the constructor of the class i inherited from
         this.soulsLeft = soulsLeft;
     }
 }
