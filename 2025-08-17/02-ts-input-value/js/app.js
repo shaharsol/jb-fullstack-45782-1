@@ -10,4 +10,5 @@ var _a;
     const element = document.getElementById('myInput');
     const value = element.value;
     console.log(`data is input currently is ${value}`);
+    const value2 = document.getElementById('myInput').value;
 });

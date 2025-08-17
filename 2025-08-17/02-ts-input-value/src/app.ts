@@ -10,6 +10,8 @@ document.getElementById('myForm')?.addEventListener('submit', (event) => {
     const value = element.value
     console.log(`data is input currently is ${value}`)
 
+    const value2 = (document.getElementById('myInput') as HTMLInputElement).value
+
 
 })
 
