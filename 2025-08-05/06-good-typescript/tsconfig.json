@@ -2,6 +2,8 @@
     "compilerOptions": {
         "outDir": "js",
         "noEmitOnError": true,
-        "target": "es2024"
+        "target": "es6",
+        "moduleResolution": "nodenext",
+        "module": "nodenext"
     }
 }

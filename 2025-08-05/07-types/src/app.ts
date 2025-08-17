@@ -22,7 +22,8 @@ const myObj: object = {}
 type User = {
     name: string,
     age: number,
-    birthdate: Date
+    birthdate: Date,
+    // eyeColor: string,
 }
 
 const aUser: User = {
