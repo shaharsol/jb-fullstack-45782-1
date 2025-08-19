@@ -1,0 +1,28 @@
+import Cat from "./cat.js";
+import Dog, { Canine } from "./dog.js";
+const dog = new Dog(40, Canine.Labrador);
+const cat = new Cat(4, 7);
+// function cloneDog(dog: Dog): Dog {
+//     return { ...dog } as Dog
+// }
+// function cloneCat(cat: Cat): Cat {
+//     return { ...cat } as Cat
+// }
+// the <> is the generics syntax
+function cloneAnimal(animal) {
+    return Object.assign({}, animal);
+}
+function doSomethingWithDog(dog) {
+    // const clonedDog = cloneDog(dog)
+    const clonedDog = cloneAnimal(dog);
+}
+function doSomethingWithCat(cat) {
+    const clonedCat = cloneAnimal(cat);
+}
+const obj = {
+    name: 'hello'
+};
+// const clonedObj = cloneAnimal(obj)
+doSomethingWithDog(dog);
+console.log(dog.canine);
+console.log(dog.weight);
