@@ -7,13 +7,13 @@
     let sum = 0;
     grades.forEach(grade => sum += grade)
 
-    console.log(`avg is ${sum/grades.length}`)
+    console.log(`avg is ${sum / grades.length}`)
 
-    const displayCountries = countries => {}
+    const displayCountries = countries => { }
 
     // standard DRY
 
-    const processCountries = countries => {}
+    const processCountries = countries => { }
 
     document.getElementById('all-button').addEventListener('click', () => {
         const countries = fetch('all url')
