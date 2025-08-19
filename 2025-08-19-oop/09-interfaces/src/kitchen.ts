@@ -1,17 +1,15 @@
-export default class Kitchen {
-    makeSushi(): void {
-        console.log('make sushi')
+import CoffeeShop from "./coffee-shop";
+import SushiShop from "./sushi-shop";
+
+export default class Kitchen implements SushiShop, CoffeeShop {
+    makeBlackCoffee(): void {
+        console.log('hot water small glass put in')
     }
-
-    makeShawarma(): void {
-
-    }
-
     makeCoffee(): void {
-
+        console.log('ground the beans then add hot water')
     }
 
-    makePasta(): void {
+    makeSushi(): void {
 
     }
 }
