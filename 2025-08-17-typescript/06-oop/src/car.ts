@@ -4,12 +4,12 @@ export default class Car {
     model: string
     engineVolume: number
     yearModel: number
-    readonly engineNumber: number 
+    readonly engineNumber: number
     price: number
     static vat: number = 1.18
 
     // methods (e.g. function)
-    ignite() { 
+    ignite() {
         console.log('car igniting...')
         // this.engineNumber = 123
     }

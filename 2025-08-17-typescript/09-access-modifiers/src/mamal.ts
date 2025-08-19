@@ -1,10 +1,10 @@
 import Animal from "./animal.js";
 
-export default class Mamal extends Animal{
-    numberOfNipples: number // if no access modifier is specified, default is public
+export default class Mamal extends Animal {
+    public numberOfNipples: number // if no access modifier is specified, default is public
     private numberOfPuppies: number
     protected numberOfBirths: number = 1
-    
+
     public brestFeed() {
         console.log('im feeding from my mamal mother')
     }
