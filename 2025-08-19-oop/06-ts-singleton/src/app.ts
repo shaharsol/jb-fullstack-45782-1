@@ -1,10 +1,9 @@
-import AlertLogger from "./alert.js";
+import alertLogger from "./alert.js"
 
-const logger = AlertLogger.getInstance()
-const logger2 = new AlertLogger()
+alertLogger.message('hello world')
+alertLogger.message('hello world')
+alertLogger.message('hello world')
+alertLogger.message('hello world')
+alertLogger.message('hello world')
 
-logger.message('hello world')
-logger.message('hello world')
-logger.message('hello world')
-logger.message('hello world')
-logger.message('hello world')
+

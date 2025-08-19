@@ -1,16 +1,10 @@
-export default class AlertLogger {
-
-    static instance: AlertLogger = new AlertLogger()
-
-    static getInstance(): AlertLogger {
-        return AlertLogger.instance
-    }
+class AlertLogger {
 
     message(message: string) {
         alert(message)
     }
 
-    private constructor() {
-    }
-
 }
+
+const alertLogger = new AlertLogger()
+export default alertLogger
