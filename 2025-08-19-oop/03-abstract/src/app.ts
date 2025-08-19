@@ -13,3 +13,4 @@ lucky.bark()
 console.log(`lucky weights ${lucky.weight}kg`)
 
 
+// const someAnimal = new Animal(45)
