@@ -19,7 +19,7 @@ export default function Demo() {
         return () => {
             clearInterval(intervalId)
         }
-    })
+    }, [])
 
     /*
 
