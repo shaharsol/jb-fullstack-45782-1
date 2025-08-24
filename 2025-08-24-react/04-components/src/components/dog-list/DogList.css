@@ -1,0 +1,4 @@
+.DogList {
+    display: flex;
+    flex-direction: row;
+}

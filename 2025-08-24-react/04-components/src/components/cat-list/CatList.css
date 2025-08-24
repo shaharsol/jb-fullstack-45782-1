@@ -1,0 +1,4 @@
+.CatList {
+    display: flex;
+    flex-direction: row;
+}
