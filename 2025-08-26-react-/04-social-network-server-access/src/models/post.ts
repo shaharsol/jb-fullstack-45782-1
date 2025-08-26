@@ -1,3 +1,4 @@
+import type PostComment from "./post-comment";
 import type User from "./user";
 
 export default interface Post {
@@ -7,5 +8,6 @@ export default interface Post {
     body: string,
     imageUrl: string,
     createdAt: string,
-    user: User
+    user: User,
+    comments: PostComment[]
 }
