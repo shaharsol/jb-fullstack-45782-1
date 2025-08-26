@@ -23,12 +23,12 @@ body,
     grid-column: 1 / span 2;
 }
 
-.Layout aside:nth-child(1) {
+.Layout aside:nth-child(0) {
     grid-row: 2;
     grid-column: 1;
 }
 
-.Layout aside:nth-child(2) {
+.Layout aside:nth-child(1) {
     grid-row: 3;
     grid-column: 1;
 }
