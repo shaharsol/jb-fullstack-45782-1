@@ -3,7 +3,7 @@ import './Demo.css'
 
 export default function Demo() {
     // let firstRender = (new Date()).toLocaleTimeString()
-    let firstRender = useRef<string>((new Date()).toLocaleTimeString())
+    const firstRender = useRef<string>((new Date()).toLocaleTimeString())
 
     // const something = useState<string>((new Date()).toLocaleTimeString())
     // something[0] // <- state value
