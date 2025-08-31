@@ -21,10 +21,14 @@ export default function Profile() {
         })()
     }, [])
 
+    function removePost(id: string): void {
+        setProfile(profile.filter(post => post.id !== id))
+    }
+
     return (
         <div className='Profile'>
             <ul>
-                {profile.map(post => <Post key={post.id} post={post} />)}
+                {profile.map(post => <Post key={post.id} post={post} removePost={removePost} />)}
             </ul>
         </div>
     )
