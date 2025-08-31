@@ -11,7 +11,7 @@ export default function NewPost(props: NewPostProps) {
 
     const { renderNewPost } = props
 
-    const { register, handleSubmit, reset } = useForm<PostDraft>()
+    const { register, handleSubmit, reset, formState } = useForm<PostDraft>()
 
     async function submit(draft: PostDraft) {
         try {
@@ -26,8 +26,28 @@ export default function NewPost(props: NewPostProps) {
     return (
         <div className='NewPost'>
             <form onSubmit={handleSubmit(submit)}>
-                <input placeholder="add title" {...register('title')} />
-                <textarea placeholder='add content' {...register('body')}></textarea>
+                <input placeholder="add title" {...register('title', {
+                    required: {
+                        value: true,
+                        message: 'Title is required'
+                    },
+                    minLength: {
+                        value: 10,
+                        message: 'Title must be at least 10 characters long'
+                    }
+                })} />
+                <div className='formError'>{formState.errors.title?.message}</div>
+                <textarea placeholder='add content' {...register('body', {
+                    required: {
+                        value: true,
+                        message: 'Post content is required'
+                    },
+                    minLength: {
+                        value: 20,
+                        message: 'Post content must be at least 20 characters long'
+                    }
+                })}></textarea>
+                <div className='formError'>{formState.errors.body?.message}</div>
                 <button>Add Post</button>
             </form>
         </div>
