@@ -1,9 +1,10 @@
+import axios from "axios"
 import type User from "../models/user"
 
 class FollowersService {
     async getFollowers(): Promise<User[]> {
-        const followers = await fetch(`${import.meta.env.VITE_REST_SERVER_URL}/follows/followers`).then<User[]>(response => response.json())
-        return followers
+        const { data } = await axios<User[]>(`${import.meta.env.VITE_REST_SERVER_URL}/follows/followers`)
+        return data
     }
 }
 
