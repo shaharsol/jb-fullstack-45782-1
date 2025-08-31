@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import type Post from '../../../models/post'
+import type PostModel from '../../../models/post'
 import './Feed.css'
 import feedService from '../../../services/feed'
+import Post from '../post/Post'
 
 export default function Feed() {
 
-    const [feed, setFeed] = useState<Post[]>([])
+    const [feed, setFeed] = useState<PostModel[]>([])
 
     useEffect(() => {
         feedService.getFeed()
@@ -16,7 +17,7 @@ export default function Feed() {
     return (
         <div className='Feed'>
             <ul>
-                {feed.map(({ id, title, user: { name }, createdAt, comments }) => <li key={id}>{title} on {(new Date(createdAt)).toLocaleDateString()} by {name} ({comments.length})</li>)}
+                {feed.map(post => <Post key={post.id} post={post} />)}
             </ul>
         </div>
     )

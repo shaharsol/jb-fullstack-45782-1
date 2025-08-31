@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import './Profile.css'
 import profileService from '../../../services/profile'
-import type Post from '../../../models/post'
+import type PostModel from '../../../models/post'
+import Post from '../post/Post'
 
 export default function Profile() {
 
     console.log('rendering...')
 
-    const [profile, setProfile] = useState<Post[]>([])
+    const [profile, setProfile] = useState<PostModel[]>([])
 
     useEffect(() => {
         (async () => {
@@ -23,7 +24,7 @@ export default function Profile() {
     return (
         <div className='Profile'>
             <ul>
-                {profile.map(({ id, title, user: { name }, createdAt, comments }) => <li key={id}>{title} on {(new Date(createdAt)).toLocaleDateString()} by {name} ({comments.length})</li>)}
+                {profile.map(post => <Post key={post.id} post={post} />)}
             </ul>
         </div>
     )
