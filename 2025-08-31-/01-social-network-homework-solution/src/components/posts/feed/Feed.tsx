@@ -14,10 +14,19 @@ export default function Feed() {
             .catch(alert)
     }, [])
 
+    function removeMe(id: string): void {
+        console.log(id)
+    }
+
     return (
         <div className='Feed'>
             <ul>
-                {feed.map(post => <Post key={post.id} post={post} />)}
+                {feed.map(post => <Post
+                    key={post.id}
+                    post={post}
+                    isEditAllowed={false}
+                    removePost={removeMe}
+                />)}
             </ul>
         </div>
     )
