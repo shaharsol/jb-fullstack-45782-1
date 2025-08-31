@@ -12,16 +12,12 @@ export default function Profile() {
     useEffect(() => {
         (async () => {
             try {
-                const profile = await profileService.getProfile()
-                setProfile(profile)
+                const profileFromServer = await profileService.getProfile()
+                setProfile(profileFromServer)
             } catch (e) {
                 alert(e)
             }
         })()
-
-        return () => {
-
-        }
     }, [])
 
     return (
