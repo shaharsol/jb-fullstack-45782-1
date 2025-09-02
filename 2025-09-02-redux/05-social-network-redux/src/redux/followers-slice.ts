@@ -2,11 +2,13 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type User from "../models/user";
 
 interface FollowersState {
-    followers: User[]
+    followers: User[],
+    isActive: boolean
 }
 
 const initialState: FollowersState = {
-    followers: []
+    followers: [],
+    isActive: true
 }
 
 export const followersSlice = createSlice({

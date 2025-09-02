@@ -3,7 +3,7 @@ import { followersSlice } from "./followers-slice";
 
 const store = configureStore({
     reducer: {
-        followers: followersSlice.reducer
+        followersSlice: followersSlice.reducer
     }
 })
 
