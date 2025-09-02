@@ -32,9 +32,11 @@ export default function Profile() {
     }
 
     function newComment(comment: PostComment) {
-        const post = profile.find(post => post.id === comment.postId)
+        const newProfile = [...profile]
+        const post = newProfile.find(post => post.id === comment.postId)
         post?.comments.push(comment)
-        setProfile([...profile])
+        // setProfile(profile)
+        setProfile(newProfile)
     }
 
     return (
