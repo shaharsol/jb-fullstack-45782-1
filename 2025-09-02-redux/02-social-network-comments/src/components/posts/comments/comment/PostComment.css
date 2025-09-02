@@ -1,0 +1,4 @@
+.PostComment {
+    display: flex;
+    flex-direction: column;
+}
