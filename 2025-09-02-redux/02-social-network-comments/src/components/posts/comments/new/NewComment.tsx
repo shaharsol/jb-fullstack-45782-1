@@ -2,13 +2,15 @@ import { useForm } from 'react-hook-form'
 import type PostCommentDraft from '../../../../models/post-comment-draft'
 import './NewComment.css'
 import commentsService from '../../../../services/comments'
+import type PostComment from '../../../../models/post-comment'
 
 interface NewCommentProps {
     postId: string
+    newComment(comment: PostComment): void
 }
 export default function NewComment(props: NewCommentProps) {
 
-    const { postId } = props
+    const { postId, newComment } = props
 
     const { register, handleSubmit, reset, formState } = useForm<PostCommentDraft>()
 
@@ -16,12 +18,12 @@ export default function NewComment(props: NewCommentProps) {
         try {
             const comment = await commentsService.newComment(postId, draft)
             reset()
+            newComment(comment)
         } catch (e) {
             alert(e)
         }
 
     }
-
 
     return (
         <div className='NewComment'>

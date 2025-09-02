@@ -56,6 +56,7 @@ export default function Post(props: PostProps) {
 
             <PostComments
                 comments={comments}
+                postId={id}
             />
 
 
