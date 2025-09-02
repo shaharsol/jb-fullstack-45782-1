@@ -4,6 +4,7 @@ import profileService from '../../../services/profile'
 import type PostModel from '../../../models/post'
 import Post from '../post/Post'
 import NewPost from '../new/NewPost'
+import type PostComment from '../../../models/post-comment'
 
 export default function Profile() {
 
@@ -30,6 +31,12 @@ export default function Profile() {
         setProfile([post, ...profile])
     }
 
+    function newComment(comment: PostComment) {
+        const post = profile.find(post => post.id === comment.postId)
+        post?.comments.push(comment)
+        setProfile([...profile])
+    }
+
     return (
         <div className='Profile'>
             <NewPost
@@ -40,6 +47,7 @@ export default function Profile() {
                 post={post}
                 removePost={removePost}
                 isEditAllowed={true}
+                newComment={newComment}
             />)}
         </div>
     )

@@ -3,11 +3,13 @@ import type PostModel from '../../../models/post'
 import profileService from '../../../services/profile'
 import './Post.css'
 import PostComments from '../comments/post-comments/PostComments'
+import type PostComment from '../../../models/post-comment'
 
 interface PostProps {
     post: PostModel,
     isEditAllowed: boolean,
     removePost(id: string): void
+    newComment(comment: PostComment): void
 }
 
 export default function Post(props: PostProps) {
@@ -24,7 +26,7 @@ export default function Post(props: PostProps) {
         comments
     } = props.post
 
-    const { removePost, isEditAllowed } = props
+    const { removePost, isEditAllowed, newComment } = props
 
     const navigate = useNavigate()
 
@@ -57,6 +59,7 @@ export default function Post(props: PostProps) {
             <PostComments
                 comments={comments}
                 postId={id}
+                newComment={newComment}
             />
 
 
