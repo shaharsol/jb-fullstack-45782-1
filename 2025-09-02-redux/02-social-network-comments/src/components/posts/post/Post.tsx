@@ -15,7 +15,9 @@ export default function Post(props: PostProps) {
     const {
         title,
         createdAt,
-        user: { name },
+        user: {
+            name
+        },
         body,
         id,
         imageUrl,

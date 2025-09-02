@@ -12,6 +12,7 @@ export default function PostComments(props: PostCommentsProps) {
 
     return (
         <div className='PostComments'>
+            <div>total comments: {comments.length}</div>
             {comments.map(comment => <PostComment
                 key={comment.id}
                 comment={comment}
