@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import type PostModel from '../../../models/post'
 import profileService from '../../../services/profile'
 import './Post.css'
+import PostComments from '../comments/post-comments/PostComments'
 
 interface PostProps {
     post: PostModel,
@@ -11,7 +12,16 @@ interface PostProps {
 
 export default function Post(props: PostProps) {
 
-    const { title, createdAt, user: { name }, body, id, imageUrl } = props.post
+    const {
+        title,
+        createdAt,
+        user: { name },
+        body,
+        id,
+        imageUrl,
+        comments
+    } = props.post
+
     const { removePost, isEditAllowed } = props
 
     const navigate = useNavigate()
@@ -41,6 +51,11 @@ export default function Post(props: PostProps) {
             {isEditAllowed && <div>
                 <button onClick={removeMe}>Delete</button><button onClick={editMe}>Edit</button>
             </div>}
+
+            <PostComments
+                comments={comments}
+            />
+
 
         </div>
     )

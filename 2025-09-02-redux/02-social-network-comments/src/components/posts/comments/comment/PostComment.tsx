@@ -1,8 +1,8 @@
-import type PostComment from '../../../../models/post-comment'
+import type PostCommentModel from '../../../../models/post-comment'
 import './PostComment.css'
 
 interface PostCommentProps {
-    comment: PostComment
+    comment: PostCommentModel
 }
 export default function PostComment(props: PostCommentProps) {
 
