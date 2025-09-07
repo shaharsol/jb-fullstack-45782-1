@@ -1,7 +1,19 @@
 import { NavLink } from 'react-router-dom'
 import './Header.css'
+import { useContext } from 'react'
+import AuthContext from '../../auth/auth/AuthContext'
+import { jwtDecode } from 'jwt-decode'
 
 export default function Header() {
+
+    const authContext = useContext(AuthContext)
+
+    const { name } = jwtDecode<{ name: string }>(authContext!.jwt)
+
+    function logout() {
+        authContext?.setJwt('')
+    }
+
     return (
         <div className='Header'>
             <div>logo</div>
@@ -11,7 +23,7 @@ export default function Header() {
 
             </nav>
             <div>
-                welcome Shahar | logout
+                welcome {name} | <button onClick={logout}>logout</button>
             </div>
         </div>
     )

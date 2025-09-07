@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import SpinnerButton from '../../common/spinner-button/SpinnerButton'
 import './Login.css'
 import { useForm } from 'react-hook-form'
 import type LoginModel from '../../../models/login'
 import authService from '../../../services/auth'
+import AuthContext from '../auth/AuthContext'
 
 export default function Login() {
 
@@ -11,11 +12,13 @@ export default function Login() {
 
     const { register, handleSubmit } = useForm<LoginModel>()
 
+    const authContext = useContext(AuthContext)
+
     async function submit(login: LoginModel) {
         try {
             setIsSubmitting(true)
-            const jwt = await authService.login(login)
-            console.log(jwt)
+            const { jwt } = await authService.login(login)
+            authContext?.setJwt(jwt)
         } catch (e) {
             alert(e)
         } finally {
