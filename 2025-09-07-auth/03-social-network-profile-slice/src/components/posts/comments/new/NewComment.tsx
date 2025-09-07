@@ -2,27 +2,29 @@ import { useForm } from 'react-hook-form'
 import type PostCommentDraft from '../../../../models/post-comment-draft'
 import './NewComment.css'
 import commentsService from '../../../../services/comments'
-import type PostComment from '../../../../models/post-comment'
 import { useState } from 'react'
 import SpinnerButton from '../../../common/spinner-button/SpinnerButton'
+import { useAppDispatcher } from '../../../../redux/hooks'
+import { newComment } from '../../../../redux/profile-slice'
 
 interface NewCommentProps {
     postId: string
-    newComment(comment: PostComment): void
 }
 export default function NewComment(props: NewCommentProps) {
 
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
-    const { postId, newComment } = props
+    const { postId } = props
 
     const { register, handleSubmit, reset, formState } = useForm<PostCommentDraft>()
+
+    const dispatch = useAppDispatcher()
 
     async function submit(draft: PostCommentDraft) {
         try {
             setIsSubmitting(true)
             const comment = await commentsService.newComment(postId, draft)
             reset()
-            newComment(comment)
+            dispatch(newComment(comment))
         } catch (e) {
             alert(e)
         } finally {

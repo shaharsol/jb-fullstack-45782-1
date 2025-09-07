@@ -7,18 +7,15 @@ import './PostComments.css'
 interface PostCommentsProps {
     comments: PostCommentModel[]
     postId: string
-    newComment(comment: PostCommentModel): void
 }
 export default function PostComments(props: PostCommentsProps) {
 
-    const { comments, postId, newComment } = props
-
+    const { comments, postId } = props
 
     return (
         <div className='PostComments'>
             <NewComment
                 postId={postId}
-                newComment={newComment}
             />
             <div>total comments: {comments.length}</div>
             {comments.map(comment => <PostComment
