@@ -1,18 +1,26 @@
 import { useState } from 'react'
 import SpinnerButton from '../../common/spinner-button/SpinnerButton'
 import './Login.css'
-import type Login from '../../../models/login'
 import { useForm } from 'react-hook-form'
-import type Login from '../../../models/login'
+import type LoginModel from '../../../models/login'
+import authService from '../../../services/auth'
 
 export default function Login() {
 
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
-    const { register, handleSubmit, reset, formState } = useForm<Login>()
+    const { register, handleSubmit } = useForm<LoginModel>()
 
-    async function submit(login: Login) {
-
+    async function submit(login: LoginModel) {
+        try {
+            setIsSubmitting(true)
+            const jwt = await authService.login(login)
+            console.log(jwt)
+        } catch (e) {
+            alert(e)
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (
