@@ -1,0 +1,36 @@
+import { useEffect } from 'react'
+import './Followers.css'
+import followersService from '../../../services/followers'
+import Follow from '../follow/Follow'
+import Spinner from '../../common/spinner/Spinner'
+import { useAppDispatcher, useAppSelector } from '../../../redux/hooks'
+import { init } from '../../../redux/followers-slice'
+
+export default function Followers() {
+    // const [followers, setFollowers] = useState<User[]>([])
+    const followers = useAppSelector(store => store.followersSlice.followers)
+    const dispatch = useAppDispatcher()
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const followers = await followersService.getFollowers()
+                // setFollowers(followers)
+                dispatch(init(followers))
+            } catch (e) {
+                alert(e)
+            }
+        })()
+    }, [dispatch])
+
+    return (
+        <div className='Followers'>
+            {followers.length > 0 && <>
+                {followers.map(follow => <Follow key={follow.id} user={follow} />)}
+            </>}
+
+            {followers.length === 0 && <Spinner />}
+
+        </div>
+    )
+}

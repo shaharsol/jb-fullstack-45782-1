@@ -3,6 +3,7 @@ import './Following.css'
 import type User from '../../../models/user'
 import followingService from '../../../services/following'
 import Follow from '../follow/Follow'
+import Spinner from '../../common/spinner/Spinner'
 
 export default function Following() {
 
@@ -20,12 +21,15 @@ export default function Following() {
 
     return (
         <div className='Following'>
-            {following.map(follow => <Follow
-                key={follow.id} 
-                user={follow}
-                isFollowing={true}
-                unfollow={unfollow}
-            />)}
+            {following.length > 0 && <>
+                {following.map(follow => <Follow
+                    key={follow.id} user={follow}
+                    isFollowing={true}
+                    unfollow={unfollow}
+                />)}
+            </>}
+
+            {following.length === 0 && <Spinner />}
         </div>
     )
 }
