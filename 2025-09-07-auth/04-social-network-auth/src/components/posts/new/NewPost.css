@@ -1,0 +1,9 @@
+.NewPost {
+    border: 1px dashed lightskyblue;
+    margin: 6px;
+}
+
+.NewPost form {
+    display: flex;
+    flex-direction: column;
+}
