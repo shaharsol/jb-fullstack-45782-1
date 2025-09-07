@@ -3,8 +3,8 @@ import type PostCommentDraft from '../../../../models/post-comment-draft'
 import './NewComment.css'
 import commentsService from '../../../../services/comments'
 import type PostComment from '../../../../models/post-comment'
-import spinnerSource from '../../../../assets/loading1.gif'
 import { useState } from 'react'
+import SpinnerButton from '../../../common/spinner-button/SpinnerButton'
 
 interface NewCommentProps {
     postId: string
@@ -23,11 +23,10 @@ export default function NewComment(props: NewCommentProps) {
             const comment = await commentsService.newComment(postId, draft)
             reset()
             newComment(comment)
-            setIsSubmitting(false)
         } catch (e) {
             alert(e)
         } finally {
-            //
+            setIsSubmitting(false)
         }
 
     }
@@ -47,8 +46,11 @@ export default function NewComment(props: NewCommentProps) {
                 })}></textarea>
                 <div className="formError">{formState.errors.body?.message}</div>
 
-                {!isSubmitting && <button>add comment</button>}
-                {isSubmitting && <span>adding comment <i><img src={spinnerSource} /></i></span>}
+                <SpinnerButton
+                    buttonText='add comment'
+                    loadingText='adding comment'
+                    isSubmitting={isSubmitting}
+                />
             </form>
         </div>
     )

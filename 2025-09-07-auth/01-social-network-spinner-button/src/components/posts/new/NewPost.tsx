@@ -3,6 +3,8 @@ import type PostDraft from '../../../models/post-draft'
 import './NewPost.css'
 import profileService from '../../../services/profile'
 import type Post from '../../../models/post'
+import SpinnerButton from '../../common/spinner-button/SpinnerButton'
+import { useState } from 'react'
 
 interface NewPostProps {
     renderNewPost(post: Post): void
@@ -13,13 +15,18 @@ export default function NewPost(props: NewPostProps) {
 
     const { register, handleSubmit, reset, formState } = useForm<PostDraft>()
 
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+
     async function submit(draft: PostDraft) {
         try {
+            setIsSubmitting(true)
             const post = await profileService.newPost(draft)
             reset()
             renderNewPost(post)
         } catch (e) {
             alert(e)
+        } finally {
+            setIsSubmitting(false)
         }
     }
 
@@ -48,7 +55,11 @@ export default function NewPost(props: NewPostProps) {
                     }
                 })}></textarea>
                 <div className='formError'>{formState.errors.body?.message}</div>
-                <button>Add Post</button>
+                <SpinnerButton
+                    buttonText='Add Post'
+                    loadingText='adding post'
+                    isSubmitting={isSubmitting}
+                />
             </form>
         </div>
     )
