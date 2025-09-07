@@ -18,7 +18,7 @@ export default function Login() {
         try {
             setIsSubmitting(true)
             const { jwt } = await authService.login(login)
-            authContext?.setJwt(jwt)
+            authContext?.newJwt(jwt)
         } catch (e) {
             alert(e)
         } finally {

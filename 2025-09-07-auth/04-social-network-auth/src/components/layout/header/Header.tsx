@@ -11,7 +11,7 @@ export default function Header() {
     const { name } = jwtDecode<{ name: string }>(authContext!.jwt)
 
     function logout() {
-        authContext?.setJwt('')
+        authContext?.newJwt('')
     }
 
     return (
