@@ -1,0 +1,18 @@
+.Post {
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed lightcoral;
+    margin: 6px;
+}
+
+.Post img {
+    height: 50px;
+}
+
+.Post div:nth-child(2) {
+    text-decoration: underline;
+}
+
+.Post div:nth-child(3) {
+    padding: 12px 0px;
+}

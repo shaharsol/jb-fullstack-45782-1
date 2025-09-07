@@ -1,0 +1,6 @@
+.PostComment {
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed lightsalmon;
+    margin: 2px;
+}

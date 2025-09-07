@@ -1,0 +1,6 @@
+.PostComments {
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed lightseagreen;
+    margin: 2px;
+}
