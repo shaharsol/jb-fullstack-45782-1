@@ -19,13 +19,15 @@ export default function Profile() {
     useEffect(() => {
         (async () => {
             try {
-                const profileFromServer = await profileService.getProfile()
-                dispatch(init(profileFromServer))
+                if (profile.length === 0) {
+                    const profileFromServer = await profileService.getProfile()
+                    dispatch(init(profileFromServer))
+                }
             } catch (e) {
                 alert(e)
             }
         })()
-    }, [dispatch])
+    }, [dispatch, profile.length])
 
     return (
         <div className='Profile'>
