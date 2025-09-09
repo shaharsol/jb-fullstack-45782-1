@@ -5,6 +5,7 @@ import SpinnerButton from '../../common/spinner-button/SpinnerButton'
 import './Follow.css'
 import { useAppDispatcher, useAppSelector } from '../../../redux/hooks'
 import { follow, unfollow } from '../../../redux/following-slice'
+import { indicateNewContentAvailable } from '../../../redux/feed-slice'
 
 interface FollowProps {
     user: User
@@ -26,6 +27,7 @@ export default function Follow(props: FollowProps) {
             setIsSubmitting(true)
             await followingService.unfollow(id)
             dispatch(unfollow(id))
+            dispatch(indicateNewContentAvailable())
         } catch (e) {
             alert(e)
         } finally {
@@ -38,6 +40,7 @@ export default function Follow(props: FollowProps) {
             setIsSubmitting(true)
             await followingService.follow(id)
             dispatch(follow(user))
+            dispatch(indicateNewContentAvailable())
         } catch (e) {
             alert(e)
         } finally {
