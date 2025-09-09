@@ -1,11 +1,12 @@
 import { useForm } from 'react-hook-form'
 import type PostCommentDraft from '../../../../models/post-comment-draft'
 import './NewComment.css'
-import commentsService from '../../../../services/comments'
 import { useState } from 'react'
 import SpinnerButton from '../../../common/spinner-button/SpinnerButton'
 import { useAppDispatcher } from '../../../../redux/hooks'
 import { newComment } from '../../../../redux/profile-slice'
+import useService from '../../../../hooks/use-service'
+import CommentsService from '../../../../services/auth-aware/CommentsService'
 
 interface NewCommentProps {
     postId: string
@@ -18,6 +19,8 @@ export default function NewComment(props: NewCommentProps) {
     const { register, handleSubmit, reset, formState } = useForm<PostCommentDraft>()
 
     const dispatch = useAppDispatcher()
+
+    const commentsService = useService(CommentsService)
 
     async function submit(draft: PostCommentDraft) {
         try {

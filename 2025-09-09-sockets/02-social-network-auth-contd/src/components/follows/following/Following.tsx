@@ -1,16 +1,18 @@
 import { useEffect } from 'react'
 import './Following.css'
-import followingService from '../../../services/following'
 import Follow from '../follow/Follow'
 import Spinner from '../../common/spinner/Spinner'
 import { useAppDispatcher, useAppSelector } from '../../../redux/hooks'
 import { init } from '../../../redux/following-slice'
+import useService from '../../../hooks/use-service'
+import FollowingService from '../../../services/auth-aware/FollowingService'
 
 export default function Following() {
 
     const following = useAppSelector(store => store.followingSlice.following)
     const dispatch = useAppDispatcher()
 
+    const followingService = useService(FollowingService)
     useEffect(() => {
 
         (async () => {

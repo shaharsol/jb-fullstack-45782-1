@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import type PostModel from '../../../models/post'
-import profileService from '../../../services/profile'
 import './Post.css'
 import PostComments from '../comments/post-comments/PostComments'
 import { useAppDispatcher } from '../../../redux/hooks'
 import { deletePost } from '../../../redux/profile-slice'
+import useService from '../../../hooks/use-service'
+import ProfileService from '../../../services/auth-aware/ProfileService'
 
 interface PostProps {
     post: PostModel,
@@ -31,6 +32,8 @@ export default function Post(props: PostProps) {
     const navigate = useNavigate()
 
     const dispatch = useAppDispatcher()
+
+    const profileService = useService(ProfileService)
 
     async function removeMe() {
         try {

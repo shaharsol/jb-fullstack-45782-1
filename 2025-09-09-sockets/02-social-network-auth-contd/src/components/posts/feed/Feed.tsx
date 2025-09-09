@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react'
 import './Feed.css'
-import feedService from '../../../services/feed'
 import Post from '../post/Post'
 import Spinner from '../../common/spinner/Spinner'
 import useTitle from '../../../hooks/use-title'
 import { useAppDispatcher, useAppSelector } from '../../../redux/hooks'
 import { init } from '../../../redux/feed-slice'
 import SpinnerButton from '../../common/spinner-button/SpinnerButton'
+import useService from '../../../hooks/use-service'
+import FeedService from '../../../services/auth-aware/FeedService'
 
 export default function Feed() {
 
     useTitle('Feed')
+
+    const feedService = useService(FeedService)
 
     const feed = useAppSelector(state => state.feedSlice.posts)
     const isNewContentAvailable = useAppSelector(state => state.feedSlice.isNewContentAvailable)
