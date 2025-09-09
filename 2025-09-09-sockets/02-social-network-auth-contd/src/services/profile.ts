@@ -6,10 +6,9 @@ import { useContext } from "react"
 class ProfileService {
     async getProfile(): Promise<Post[]> {
 
-        useContext()
         const options = {
             headers: {
-                Authorization: `Bearer ${jwt}`
+                Authorization: `Bearer fdgdfgdfgdfgdfgd`
             }
         }
         const response = await axios.get<Post[]>(`${import.meta.env.VITE_REST_SERVER_URL}/profile`, options)

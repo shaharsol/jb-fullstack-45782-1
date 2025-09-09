@@ -12,6 +12,8 @@ export default function Profile() {
 
     useTitle('Profile')
 
+    // const profileService = useService(ProfileService)
+
     const newPost = useAppSelector(state => state.profileSlice.newPost)
     const profile = useAppSelector(state => state.profileSlice.posts)
     const dispatch = useAppDispatcher()
