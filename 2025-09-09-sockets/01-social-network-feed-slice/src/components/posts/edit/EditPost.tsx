@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form'
 import type PostDraft from '../../../models/post-draft'
 import SpinnerButton from '../../common/spinner-button/SpinnerButton'
 import Spinner from '../../common/spinner/Spinner'
+import { useAppDispatcher, useAppSelector } from '../../../redux/hooks'
+import { init } from '../../../redux/profile-slice'
 
 export default function EditPost() {
 
@@ -15,19 +17,26 @@ export default function EditPost() {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
     const [isReady, setIsReady] = useState<boolean>(false)
 
+    const post = useAppSelector(state => state.profileSlice.posts.find(p => p.id === id))
+    const dispatch = useAppDispatcher()
 
     const navigate = useNavigate()
 
     useEffect(() => {
         (async () => {
-            const post = await profileService.getPost(id!)
-            const { title, body } = post
-            const draft = { title, body }
-            reset(draft)
-            setIsReady(true)
+            // const post = await profileService.getPost(id!)
+            if (!post) {
+                const profileFromServer = await profileService.getProfile()
+                dispatch(init(profileFromServer))
+            } else {
+                const { title, body } = post
+                const draft = { title, body }
+                reset(draft)
+                setIsReady(true)
+            }
         })()
 
-    }, [id, reset])
+    }, [dispatch, id, post, reset])
 
     async function submit(draft: PostDraft) {
         try {
@@ -75,6 +84,7 @@ export default function EditPost() {
                         loadingText='updating post'
                         isSubmitting={isSubmitting}
                     />
+                    <input></input>
                 </form>
             </>}
 

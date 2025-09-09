@@ -9,6 +9,7 @@ import { deletePost } from '../../../redux/profile-slice'
 interface PostProps {
     post: PostModel,
     isEditAllowed: boolean,
+    isNew?: boolean
 }
 
 export default function Post(props: PostProps) {
@@ -25,7 +26,7 @@ export default function Post(props: PostProps) {
         comments
     } = props.post
 
-    const { isEditAllowed } = props
+    const { isEditAllowed, isNew } = props
 
     const navigate = useNavigate()
 
@@ -46,8 +47,10 @@ export default function Post(props: PostProps) {
         navigate(`/profile/edit/${id}`)
     }
 
+    const className = `Post ${isNew ? 'new-post' : ''}`
+
     return (
-        <div className='Post'>
+        <div className={className}>
             <div><h3>{title}</h3></div>
             <div>{(new Date(createdAt)).toLocaleDateString()} by {name}</div>
             <div>{body}</div>

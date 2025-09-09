@@ -2,11 +2,15 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type Post from "../models/post";
 import type PostComment from "../models/post-comment";
 
+
+
 interface ProfileState {
+    newPost?: Post
     posts: Post[]
 }
 
 const initialState: ProfileState = {
+    newPost: undefined,
     posts: []
 }
 
@@ -18,7 +22,8 @@ export const profileSlice = createSlice({
             state.posts = action.payload
         },
         newPost: (state, action: PayloadAction<Post>) => {
-            state.posts = [action.payload, ...state.posts]
+            // state.posts = [action.payload, ...state.posts]
+            state.newPost = action.payload
         },
         updatePost: (state, action: PayloadAction<Post>) => {
             const idx = state.posts.findIndex(p => p.id === action.payload.id)
@@ -30,10 +35,14 @@ export const profileSlice = createSlice({
         },
         deletePost: (state, action: PayloadAction<string>) => {
             state.posts = state.posts.filter(p => p.id !== action.payload)
+        },
+        postAged: (state) => {
+            state.posts = [state.newPost!, ...state.posts]
+            state.newPost = undefined
         }
     }
 })
 
-export const { init, newPost, updatePost, newComment, deletePost } = profileSlice.actions
+export const { init, newPost, updatePost, newComment, deletePost, postAged } = profileSlice.actions
 
 export default profileSlice.reducer

@@ -6,12 +6,13 @@ import NewPost from '../new/NewPost'
 import Spinner from '../../common/spinner/Spinner'
 import useTitle from '../../../hooks/use-title'
 import { useAppDispatcher, useAppSelector } from '../../../redux/hooks'
-import { init } from '../../../redux/profile-slice'
+import { init, postAged } from '../../../redux/profile-slice'
 
 export default function Profile() {
 
     useTitle('Profile')
 
+    const newPost = useAppSelector(state => state.profileSlice.newPost)
     const profile = useAppSelector(state => state.profileSlice.posts)
     const dispatch = useAppDispatcher()
 
@@ -28,10 +29,24 @@ export default function Profile() {
         })()
     }, [dispatch, profile.length])
 
+    useEffect(() => {
+        if (newPost) {
+            setTimeout(() => {
+                dispatch(postAged())
+            }, 2000)
+        }
+    }, [dispatch, newPost])
+
     return (
         <div className='Profile'>
             {profile.length > 0 && <>
                 <NewPost />
+                {newPost && <Post
+                    key={newPost.id}
+                    post={newPost}
+                    isEditAllowed={true}
+                    isNew={true}
+                />}
                 {profile.map(post => <Post
                     key={post.id}
                     post={post}
