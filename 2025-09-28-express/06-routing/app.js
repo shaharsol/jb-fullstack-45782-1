@@ -17,8 +17,6 @@ const logRequest = require('./middlewares/log-request')
 app.use('/', logRequest)
 
 app.use('/users', usersRouter)
-// /users /users/123 /users/123/child/567 
-
 app.use('/products', productsRouter)
 
 // not found 404 middleware
