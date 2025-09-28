@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "axios": "^1.12.2",
+    "express": "^5.1.0",
+    "jstoxml": "^7.0.1"
+  }
+}

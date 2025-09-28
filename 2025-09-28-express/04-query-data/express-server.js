@@ -74,6 +74,7 @@ const getProducts = (request, response, next) => {
 const getUsers = (request, response, next) => {
     // response.setHeader('Content-Type', 'application/json')
     // response.end(JSON.stringify(users))
+    console.log(`age is ${request.query}`)
     console.log(`db connection is`, request.db)
     response.json(users)
     next()
