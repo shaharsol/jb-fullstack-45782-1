@@ -5,3 +5,4 @@
 // Node.js replaces that with process
 console.log(process.env.DATABASE_URL)
 console.log(process.env.GOLAN)
+
