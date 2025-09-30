@@ -11,20 +11,20 @@ import { Model, Table } from "sequelize-typescript";
 })
 export default class User extends Model {
     @PrimaryKey
-    @Column(DataType.UUID)
     @Default(DataType.UUIDV4)
+    @Column(DataType.UUID)
     id: string
 
-    @Column(DataType.STRING)
     @AllowNull(false)
+    @Column(DataType.STRING(30))
     name: string
 
-    @Column(DataType.STRING)
     @AllowNull(false)
     @Index({ unique: true })
+    @Column(DataType.STRING)
     username: string
 
-    @Column(DataType.STRING)
     @AllowNull(false)
+    @Column(DataType.STRING)
     password: string
 }

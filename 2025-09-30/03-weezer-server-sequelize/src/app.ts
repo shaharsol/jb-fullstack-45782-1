@@ -4,6 +4,7 @@ import responder from './middlewares/error/responder';
 import notFound from './middlewares/not-found';
 import profileRouter from './routers/profile'
 import config from 'config'
+import sequelize from './db/sequelize';
 
 const app = express()
 
@@ -21,5 +22,9 @@ app.use(notFound)
 // error middlewares
 app.use(logger)
 app.use(responder)
+
+// synchronize database schema (not data) changes to the database
+// i.e syncs our TypeScript models folder into the actual SQL Schema
+sequelize.sync({ force: true })
 
 app.listen(port, () => console.log(`${appName} started on port ${port}`))
