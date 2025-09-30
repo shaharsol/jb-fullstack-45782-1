@@ -80,16 +80,21 @@ const getUsers = (request, response, next) => {
 }
 
 const newUser = (request, response, next) => {
-    console.log('saving user....')
-    // response.writeHead(201)
-    // response.end('saved user in database...')
-    response.status(201).send('saved user in database...')
-    console.log('responded...')
-    next()
+    try {
+        console.log('saving user....')
+        // response.writeHead(201)
+        // response.end('saved user in database...')
+        response.status(201).send('saved user in database...')
+        console.log('responded...')
+        next()
+    } catch (e) {
+        next(e)
+    }
 }
 
 const notFound = (request, response, next) => {
-    response.status(404).send('yo bro, what u want is not here... with accent')
+    // response.status(404).send('yo bro, what u want is not here... with accent')
+    next({ status: 404, message: 'yo bro, what u want is not here... with accent' })
 }
 
 const errorLogger = (err, request, response, next) => {
@@ -97,13 +102,14 @@ const errorLogger = (err, request, response, next) => {
     next(err)
 }
 
-const pagerDuty = (err, request, response, next) => {
-    console.log('sending page to Ido')
-    next(err)
-}
 
 const errorResponder = (err, request, response, next) => {
     response.status(err.status || 500).send(err || 'internal server error...')
+}
+
+const pagerDuty = (err, request, response, next) => {
+    console.log('sending page to Ido')
+    next(err)
 }
 
 
