@@ -1,10 +1,12 @@
-import { Column } from "sequelize-typescript";
+import { Column, HasMany } from "sequelize-typescript";
 import { Default } from "sequelize-typescript";
 import { Index } from "sequelize-typescript";
 import { AllowNull } from "sequelize-typescript";
 import { DataType } from "sequelize-typescript";
 import { PrimaryKey } from "sequelize-typescript";
 import { Model, Table } from "sequelize-typescript";
+import Comment from "./Comment";
+import Post from "./Post";
 
 @Table({
     underscored: true
@@ -27,4 +29,16 @@ export default class User extends Model {
     @AllowNull(false)
     @Column(DataType.STRING)
     password: string
+
+    @HasMany(() => Post, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    })
+    posts: Post[]
+
+    @HasMany(() => Comment, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    })
+    comments: Comment[]
 }
