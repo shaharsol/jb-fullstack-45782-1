@@ -3,14 +3,7 @@ import Post from "../../models/Post";
 import User from "../../models/User";
 import Comment from "../../models/Comment";
 import { newPostValidator } from "./validator";
-
-const postIncludes = {
-    include: [User, {
-        model: Comment,
-        include: [User]
-    }]
-}
-
+import postIncludes from "../common/post-includes";
 
 export async function getProfile(req: Request, res: Response, next: NextFunction) {
 
