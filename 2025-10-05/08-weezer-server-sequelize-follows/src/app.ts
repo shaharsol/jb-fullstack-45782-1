@@ -4,6 +4,7 @@ import responder from './middlewares/error/responder';
 import notFound from './middlewares/not-found';
 import profileRouter from './routers/profile'
 import feedRouter from './routers/feed'
+import followsRouter from './routers/follows'
 import config from 'config'
 import sequelize from './db/sequelize';
 
@@ -21,6 +22,7 @@ app.use(json())
 // load routers
 app.use('/profile', profileRouter)
 app.use('/feed', feedRouter)
+app.use('/follows', followsRouter)
 
 // not found
 app.use(notFound)
