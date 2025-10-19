@@ -4,9 +4,8 @@ import Follow from "../../models/Follow";
 
 export async function getFollowing(req: Request, res: Response, next: NextFunction) {
     try {
-        const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
 
-        const { following } = await User.findByPk(userId, {
+        const { following } = await User.findByPk(req.userId, {
             include: [{
                 model: User,
                 as: 'following'
@@ -22,9 +21,8 @@ export async function getFollowing(req: Request, res: Response, next: NextFuncti
 
 export async function getFollowers(req: Request, res: Response, next: NextFunction) {
     try {
-        const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
 
-        const { followers } = await User.findByPk(userId, {
+        const { followers } = await User.findByPk(req.userId, {
             include: [{
                 model: User,
                 as: 'followers'
@@ -39,11 +37,10 @@ export async function getFollowers(req: Request, res: Response, next: NextFuncti
 
 export async function follow(req: Request<{ id: string }>, res: Response, next: NextFunction) {
     try {
-        const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
 
         const existing = await Follow.findOne({
             where: {
-                followerId: userId,
+                followerId: req.userId,
                 followeeId: req.params.id
             }
         })
@@ -51,7 +48,7 @@ export async function follow(req: Request<{ id: string }>, res: Response, next: 
         if (existing) throw new Error('follow already exists')
 
         const follow = await Follow.create({
-            followerId: userId,
+            followerId: req.userId,
             followeeId: req.params.id
         })
         res.json(follow)
@@ -66,10 +63,9 @@ export async function follow(req: Request<{ id: string }>, res: Response, next: 
 
 export async function unfollow(req: Request<{ id: string }>, res: Response, next: NextFunction) {
     try {
-        const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
         const follow = await Follow.findOne({
             where: {
-                followerId: userId,
+                followerId: req.userId,
                 followeeId: req.params.id
             }
         })
