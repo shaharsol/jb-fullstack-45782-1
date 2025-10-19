@@ -1,11 +1,3 @@
-declare global {
-    namespace Express {
-        interface Request {
-            userId: string
-        }
-    }
-}
-
 import express, { json } from 'express'
 import logger from './middlewares/error/logger';
 import responder from './middlewares/error/responder';
