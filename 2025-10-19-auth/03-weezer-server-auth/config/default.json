@@ -2,7 +2,8 @@
     "app": {
         "port": 3000,
         "name": "weezer dev",
-        "secret": ""
+        "secret": "MySecret",
+        "jwtSecret": "JwtSecret"
     },
     "db": {
         "host": "localhost",

@@ -2,6 +2,7 @@ import express, { json } from 'express'
 import logger from './middlewares/error/logger';
 import responder from './middlewares/error/responder';
 import notFound from './middlewares/not-found';
+import authRouter from './routers/auth'
 import profileRouter from './routers/profile'
 import feedRouter from './routers/feed'
 import followsRouter from './routers/follows'
@@ -21,6 +22,7 @@ console.log(`app secret is ${secret}`)
 app.use(json())
 
 // load routers
+app.use('/auth', authRouter)
 app.use('/profile', profileRouter)
 app.use('/feed', feedRouter)
 app.use('/follows', followsRouter)
