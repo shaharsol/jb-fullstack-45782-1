@@ -1,0 +1,6 @@
+{
+    "app": {
+        "secret": "APP_SECRET",
+        "jwtSecret": "JWT_SECRET"
+    }
+}
