@@ -9,4 +9,4 @@ export default interface Post extends PostDraft {
     userId: string,
     user: User,
     comments: PostComment[]
-}
+};;;;;;;;;;

@@ -7,4 +7,4 @@ export default interface PostComment extends PostCommentDraft {
     userId: string,
     createdAt: string,
     user: User
-}
+};;;;;;;;;;

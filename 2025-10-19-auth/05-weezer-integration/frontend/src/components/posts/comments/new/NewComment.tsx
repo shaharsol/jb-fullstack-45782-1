@@ -1,37 +1,37 @@
-import { useForm } from 'react-hook-form'
-import type PostCommentDraft from '../../../../models/post-comment-draft'
-import './NewComment.css'
-import { useState } from 'react'
-import SpinnerButton from '../../../common/spinner-button/SpinnerButton'
-import { useAppDispatcher } from '../../../../redux/hooks'
-import { newComment } from '../../../../redux/profile-slice'
-import useService from '../../../../hooks/use-service'
-import CommentsService from '../../../../services/auth-aware/CommentsService'
+import { useForm } from 'react-hook-form';
+import type PostCommentDraft from '../../../../models/post-comment-draft';
+import './NewComment.css';
+import { useState } from 'react';
+import SpinnerButton from '../../../common/spinner-button/SpinnerButton';
+import { useAppDispatcher } from '../../../../redux/hooks';
+import { newComment } from '../../../../redux/profile-slice';
+import useService from '../../../../hooks/use-service';
+import CommentsService from '../../../../services/auth-aware/CommentsService';
 
 interface NewCommentProps {
     postId: string
 }
 export default function NewComment(props: NewCommentProps) {
 
-    const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
-    const { postId } = props
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+    const { postId } = props;
 
-    const { register, handleSubmit, reset, formState } = useForm<PostCommentDraft>()
+    const { register, handleSubmit, reset, formState } = useForm<PostCommentDraft>();
 
-    const dispatch = useAppDispatcher()
+    const dispatch = useAppDispatcher();
 
-    const commentsService = useService(CommentsService)
+    const commentsService = useService(CommentsService);
 
     async function submit(draft: PostCommentDraft) {
         try {
-            setIsSubmitting(true)
-            const comment = await commentsService.newComment(postId, draft)
-            reset()
-            dispatch(newComment(comment))
+            setIsSubmitting(true);
+            const comment = await commentsService.newComment(postId, draft);
+            reset();
+            dispatch(newComment(comment));
         } catch (e) {
-            alert(e)
+            alert(e);
         } finally {
-            setIsSubmitting(false)
+            setIsSubmitting(false);
         }
 
     }
@@ -58,5 +58,5 @@ export default function NewComment(props: NewCommentProps) {
                 />
             </form>
         </div>
-    )
+    );
 }

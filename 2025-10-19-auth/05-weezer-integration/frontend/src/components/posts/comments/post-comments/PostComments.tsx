@@ -1,7 +1,7 @@
-import type PostCommentModel from '../../../../models/post-comment'
-import PostComment from '../comment/PostComment'
-import NewComment from '../new/NewComment'
-import './PostComments.css'
+import type PostCommentModel from '../../../../models/post-comment';
+import PostComment from '../comment/PostComment';
+import NewComment from '../new/NewComment';
+import './PostComments.css';
 
 
 interface PostCommentsProps {
@@ -10,7 +10,7 @@ interface PostCommentsProps {
 }
 export default function PostComments(props: PostCommentsProps) {
 
-    const { comments, postId } = props
+    const { comments, postId } = props;
 
     return (
         <div className='PostComments'>
@@ -23,5 +23,5 @@ export default function PostComments(props: PostCommentsProps) {
                 comment={comment}
             />)}
         </div>
-    )
+    );
 }

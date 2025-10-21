@@ -2,7 +2,7 @@ import type { AxiosInstance } from "axios";
 import axios from "axios";
 
 export default abstract class AuthAware {
-    axiosInstance: AxiosInstance
+    axiosInstance: AxiosInstance;
 
     constructor(jwt: string, clientId: string) {
         this.axiosInstance = axios.create({
@@ -11,6 +11,6 @@ export default abstract class AuthAware {
                 Authorization: `Bearer ${jwt}`,
                 'x-client-id': `${clientId}`
             }
-        })
+        });
     }
 }

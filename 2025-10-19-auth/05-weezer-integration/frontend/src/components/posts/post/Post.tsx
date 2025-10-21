@@ -1,11 +1,11 @@
-import { useNavigate } from 'react-router-dom'
-import type PostModel from '../../../models/post'
-import './Post.css'
-import PostComments from '../comments/post-comments/PostComments'
-import { useAppDispatcher } from '../../../redux/hooks'
-import { deletePost } from '../../../redux/profile-slice'
-import useService from '../../../hooks/use-service'
-import ProfileService from '../../../services/auth-aware/ProfileService'
+import { useNavigate } from 'react-router-dom';
+import type PostModel from '../../../models/post';
+import './Post.css';
+import PostComments from '../comments/post-comments/PostComments';
+import { useAppDispatcher } from '../../../redux/hooks';
+import { deletePost } from '../../../redux/profile-slice';
+import useService from '../../../hooks/use-service';
+import ProfileService from '../../../services/auth-aware/ProfileService';
 
 interface PostProps {
     post: PostModel,
@@ -25,32 +25,32 @@ export default function Post(props: PostProps) {
         id,
         imageUrl,
         comments
-    } = props.post
+    } = props.post;
 
-    const { isEditAllowed, isNew } = props
+    const { isEditAllowed, isNew } = props;
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const dispatch = useAppDispatcher()
+    const dispatch = useAppDispatcher();
 
-    const profileService = useService(ProfileService)
+    const profileService = useService(ProfileService);
 
     async function removeMe() {
         try {
             if (confirm('are you sure?')) {
-                await profileService.remove(id)
-                dispatch(deletePost(id))
+                await profileService.remove(id);
+                dispatch(deletePost(id));
             }
         } catch (e) {
-            alert(e)
+            alert(e);
         }
     }
 
     function editMe() {
-        navigate(`/profile/edit/${id}`)
+        navigate(`/profile/edit/${id}`);
     }
 
-    const className = `Post ${isNew ? 'new-post' : ''}`
+    const className = `Post ${isNew ? 'new-post' : ''}`;
 
     return (
         <div className={className}>
@@ -70,5 +70,5 @@ export default function Post(props: PostProps) {
 
 
         </div>
-    )
+    );
 }

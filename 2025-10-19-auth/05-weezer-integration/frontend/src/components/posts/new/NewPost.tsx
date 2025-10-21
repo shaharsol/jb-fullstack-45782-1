@@ -1,33 +1,33 @@
-import { useForm } from 'react-hook-form'
-import type PostDraft from '../../../models/post-draft'
-import './NewPost.css'
-import SpinnerButton from '../../common/spinner-button/SpinnerButton'
-import { useState } from 'react'
-import { useAppDispatcher } from '../../../redux/hooks'
-import { newPost } from '../../../redux/profile-slice'
-import useService from '../../../hooks/use-service'
-import ProfileService from '../../../services/auth-aware/ProfileService'
+import { useForm } from 'react-hook-form';
+import type PostDraft from '../../../models/post-draft';
+import './NewPost.css';
+import SpinnerButton from '../../common/spinner-button/SpinnerButton';
+import { useState } from 'react';
+import { useAppDispatcher } from '../../../redux/hooks';
+import { newPost } from '../../../redux/profile-slice';
+import useService from '../../../hooks/use-service';
+import ProfileService from '../../../services/auth-aware/ProfileService';
 
 export default function NewPost() {
 
-    const { register, handleSubmit, reset, formState } = useForm<PostDraft>()
+    const { register, handleSubmit, reset, formState } = useForm<PostDraft>();
 
-    const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-    const dispatch = useAppDispatcher()
+    const dispatch = useAppDispatcher();
 
-    const profileService = useService(ProfileService)
+    const profileService = useService(ProfileService);
 
     async function submit(draft: PostDraft) {
         try {
-            setIsSubmitting(true)
-            const post = await profileService.newPost(draft)
-            reset()
-            dispatch(newPost(post))
+            setIsSubmitting(true);
+            const post = await profileService.newPost(draft);
+            reset();
+            dispatch(newPost(post));
         } catch (e) {
-            alert(e)
+            alert(e);
         } finally {
-            setIsSubmitting(false)
+            setIsSubmitting(false);
         }
     }
 
@@ -63,5 +63,5 @@ export default function NewPost() {
                 />
             </form>
         </div>
-    )
+    );
 }

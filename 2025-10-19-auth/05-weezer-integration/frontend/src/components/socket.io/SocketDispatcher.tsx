@@ -12,41 +12,41 @@ import SocketDispatcherContext from "./SocketDispatcherContext";
 
 export default function SocketDispatcher(props: PropsWithChildren) {
 
-    const dispatch = useAppDispatcher()
-    const userId = useUserId()
+    const dispatch = useAppDispatcher();
+    const userId = useUserId();
 
-    const [clientId] = useState<string>(v4())
+    const [clientId] = useState<string>(v4());
 
     useEffect(() => {
-        const socket = io(`${import.meta.env.VITE_IO_SERVER_URL}`)
+        const socket = io(`${import.meta.env.VITE_IO_SERVER_URL}`);
         socket.onAny((eventName: string, payload) => {
             if (payload.from === clientId) return;
             switch (eventName) {
                 case 'new-post':
                     if ((payload.post as Post).user.id === userId) {
-                        dispatch(newPost(payload.post as Post))
+                        dispatch(newPost(payload.post as Post));
                     }
                     break;
                 case 'new-follow':
                     if (userId === (payload.followee as User).id) {
-                        dispatch(newFollower((payload.follower as User)))
+                        dispatch(newFollower((payload.follower as User)));
                     } else if (userId === (payload.follower as User).id) {
-                        dispatch(follow(payload.followee as User))
+                        dispatch(follow(payload.followee as User));
                     }
                     break;
             }
-        })
+        });
 
-        return () => { socket.disconnect() }
-    }, [dispatch, userId])
+        return () => { socket.disconnect(); };
+    }, [dispatch, userId]);
 
 
 
-    const { children } = props
+    const { children } = props;
 
     return (
         <SocketDispatcherContext.Provider value={{ clientId }}>
             {children}
         </SocketDispatcherContext.Provider>
-    )
+    );
 }

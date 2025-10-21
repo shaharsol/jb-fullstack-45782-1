@@ -9,24 +9,24 @@ interface FollowersState {
 const initialState: FollowersState = {
     followers: [],
     isActive: true
-}
+};
 
 export const followersSlice = createSlice({
     name: 'followers',
     initialState,
     reducers: {
         init: (state, action: PayloadAction<User[]>) => {
-            state.followers = action.payload
+            state.followers = action.payload;
         },
         newFollower: (state, action: PayloadAction<User>) => {
-            state.followers.push(action.payload)
+            state.followers.push(action.payload);
         },
         followerRemoved: (state, action: PayloadAction<string>) => {
-            state.followers = state.followers.filter(follow => follow.id !== action.payload)
+            state.followers = state.followers.filter(follow => follow.id !== action.payload);
         }
     }
-})
+});
 
-export const { init, newFollower, followerRemoved } = followersSlice.actions
+export const { init, newFollower, followerRemoved } = followersSlice.actions;
 
-export default followersSlice.reducer
+export default followersSlice.reducer;

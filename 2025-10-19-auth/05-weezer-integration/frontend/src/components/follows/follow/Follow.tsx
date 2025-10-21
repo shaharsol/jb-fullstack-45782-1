@@ -1,53 +1,53 @@
-import { useState } from 'react'
-import type User from '../../../models/user'
-import SpinnerButton from '../../common/spinner-button/SpinnerButton'
-import './Follow.css'
-import { useAppDispatcher, useAppSelector } from '../../../redux/hooks'
-import { follow, unfollow } from '../../../redux/following-slice'
-import { indicateNewContentAvailable } from '../../../redux/feed-slice'
-import useService from '../../../hooks/use-service'
-import FollowingService from '../../../services/auth-aware/FollowingService'
+import { useState } from 'react';
+import type User from '../../../models/user';
+import SpinnerButton from '../../common/spinner-button/SpinnerButton';
+import './Follow.css';
+import { useAppDispatcher, useAppSelector } from '../../../redux/hooks';
+import { follow, unfollow } from '../../../redux/following-slice';
+import { indicateNewContentAvailable } from '../../../redux/feed-slice';
+import useService from '../../../hooks/use-service';
+import FollowingService from '../../../services/auth-aware/FollowingService';
 
 interface FollowProps {
     user: User
 }
 export default function Follow(props: FollowProps) {
 
-    const { user } = props
+    const { user } = props;
 
-    const { id, name } = user
+    const { id, name } = user;
 
-    const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-    const amIFollowing = useAppSelector(store => store.followingSlice.following.findIndex(f => f.id === id) > -1)
+    const amIFollowing = useAppSelector(store => store.followingSlice.following.findIndex(f => f.id === id) > -1);
 
-    const dispatch = useAppDispatcher()
+    const dispatch = useAppDispatcher();
 
-    const followingService = useService(FollowingService)
+    const followingService = useService(FollowingService);
 
     async function unfollowMe() {
         try {
-            setIsSubmitting(true)
-            await followingService.unfollow(id)
-            dispatch(unfollow(id))
-            dispatch(indicateNewContentAvailable())
+            setIsSubmitting(true);
+            await followingService.unfollow(id);
+            dispatch(unfollow(id));
+            dispatch(indicateNewContentAvailable());
         } catch (e) {
-            alert(e)
+            alert(e);
         } finally {
-            setIsSubmitting(false)
+            setIsSubmitting(false);
         }
     }
 
     async function followMe() {
         try {
-            setIsSubmitting(true)
-            await followingService.follow(id)
-            dispatch(follow(user))
-            dispatch(indicateNewContentAvailable())
+            setIsSubmitting(true);
+            await followingService.follow(id);
+            dispatch(follow(user));
+            dispatch(indicateNewContentAvailable());
         } catch (e) {
-            alert(e)
+            alert(e);
         } finally {
-            setIsSubmitting(false)
+            setIsSubmitting(false);
         }
     }
 
@@ -73,5 +73,5 @@ export default function Follow(props: FollowProps) {
 
             </div>
         </div>
-    )
+    );
 }

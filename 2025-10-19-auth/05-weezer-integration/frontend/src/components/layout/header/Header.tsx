@@ -1,16 +1,16 @@
-import { NavLink } from 'react-router-dom'
-import './Header.css'
-import { useContext } from 'react'
-import AuthContext from '../../auth/auth/AuthContext'
-import useUsername from '../../../hooks/use-username'
+import { NavLink } from 'react-router-dom';
+import './Header.css';
+import { useContext } from 'react';
+import AuthContext from '../../auth/auth/AuthContext';
+import useUsername from '../../../hooks/use-username';
 
 export default function Header() {
-    const authContext = useContext(AuthContext)
+    const authContext = useContext(AuthContext);
 
-    const name = useUsername()
+    const name = useUsername();
 
     function logout() {
-        authContext?.newJwt('')
+        authContext?.newJwt('');
     }
 
     return (
@@ -25,5 +25,5 @@ export default function Header() {
                 welcome {name} | <button onClick={logout}>logout</button>
             </div>
         </div>
-    )
+    );
 }

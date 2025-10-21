@@ -14,5 +14,5 @@ export default function Main() {
             <Route path="/feed" element={<Feed />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
-    )
+    );
 }
