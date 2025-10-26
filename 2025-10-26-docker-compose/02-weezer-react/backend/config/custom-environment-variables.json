@@ -1,0 +1,9 @@
+{
+    "app": {
+        "secret": "APP_SECRET",
+        "jwtSecret": "JWT_SECRET"
+    },
+    "db": {
+        "host": "DB_HOST"
+    }
+}

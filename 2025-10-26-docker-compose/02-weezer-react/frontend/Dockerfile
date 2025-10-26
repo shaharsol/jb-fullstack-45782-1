@@ -13,15 +13,9 @@ RUN npm install
 # copy everthing except whatever is in .dockerignore
 COPY ./ ./
 
-# build typescript into javascript
-RUN npm run build
-
-# lets get rid of the src folder
-RUN rm -rf ./src
-
 # what runs when the image is loaded by docker into a container
-CMD ["npm", "start"]
+CMD ["npm", "run", "docker"]
 
 
 
-# docker run --name weezer-backend -d -e NODE_ENV=docker  -p 3010:3000 shaharsol/weezer-backend:3.0.0
+# docker run --name weezer-frontend -d -p 3011:5173 shaharsol/weezer-frontend:1.0.1
