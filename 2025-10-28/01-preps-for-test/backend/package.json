@@ -1,0 +1,35 @@
+{
+    "name": "01-toysrus-server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "ts-node-dev src/app.ts",
+        "build": "tsc",
+        "start": "node ./dist/app.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "config": "^4.1.1",
+        "cors": "^2.8.5",
+        "express": "^5.1.0",
+        "joi": "^18.0.1",
+        "jsonwebtoken": "^9.0.2",
+        "jwt-decode": "^4.0.0",
+        "mysql2": "^3.15.1",
+        "sequelize-typescript": "^2.1.6"
+    },
+    "devDependencies": {
+        "@types/jsonwebtoken": "^9.0.10",
+        "@types/config": "^3.3.5",
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.3",
+        "@types/joi": "^17.2.3",
+        "@types/node": "^24.8.1",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.9.3"
+    }
+}
