@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "c2aa3ff5-ab6d-4a9f-82b7-7243efceb61b",
+		"name": "toys r us",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10663722"
+	},
+	"item": [
+		{
+			"name": "get all audeinces",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/audiences",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"audiences"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "games per audience id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/games/by-audience/6ea97228-5231-4528-b139-74fe8c211895",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games",
+						"by-audience",
+						"6ea97228-5231-4528-b139-74fe8c211895"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "games by max price",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/games/by-max-price?maxPrice=9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games",
+						"by-max-price"
+					],
+					"query": [
+						{
+							"key": "maxPrice",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create game",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"audienceId\": \"589de178-0bd2-4798-9684-16750ae3b7dd\",\r\n    \"name\": \"Elias\",\r\n    \"description\": \"very viral game\",\r\n    \"price\": 120\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/games/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
