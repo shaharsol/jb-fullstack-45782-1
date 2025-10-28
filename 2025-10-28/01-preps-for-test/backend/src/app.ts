@@ -2,15 +2,10 @@ import express, { json } from 'express'
 import logger from './middlewares/error/logger';
 import responder from './middlewares/error/responder';
 import notFound from './middlewares/not-found';
-import authRouter from './routers/auth'
-import profileRouter from './routers/profile'
-import feedRouter from './routers/feed'
-import followsRouter from './routers/follows'
-import commentsRouter from './routers/comments'
 import config from 'config'
 import sequelize from './db/sequelize';
-import enforceAuth from './middlewares/enforce-auth';
 import cors from 'cors'
+import audiencesRouter from './routers/audiences'
 
 const app = express()
 
@@ -27,12 +22,7 @@ app.use(cors())
 app.use(json())
 
 // load routers
-app.use('/auth', authRouter)
-app.use(enforceAuth)
-app.use('/profile', profileRouter)
-app.use('/feed', feedRouter)
-app.use('/follows', followsRouter)
-app.use('/comments', commentsRouter)
+app.use('/audiences', audiencesRouter)
 
 // not found
 app.use(notFound)
