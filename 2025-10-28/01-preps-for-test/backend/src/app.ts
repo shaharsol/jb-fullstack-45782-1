@@ -6,6 +6,7 @@ import config from 'config'
 import sequelize from './db/sequelize';
 import cors from 'cors'
 import audiencesRouter from './routers/audiences'
+import gamesRouter from './routers/games'
 
 const app = express()
 
@@ -23,6 +24,7 @@ app.use(json())
 
 // load routers
 app.use('/audiences', audiencesRouter)
+app.use('/games', gamesRouter)
 
 // not found
 app.use(notFound)
