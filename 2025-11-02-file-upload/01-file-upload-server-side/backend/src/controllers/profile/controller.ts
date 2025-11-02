@@ -47,7 +47,11 @@ export async function deletePost(req: Request<{ id: string }>, res: Response, ne
 export async function createPost(req: Request, res: Response, next: NextFunction) {
 
     try {
-        const newPost = await Post.create({ ...req.body, userId: req.userId })
+        const newPost = await Post.create({ 
+            ...req.body, 
+            userId: req.userId, 
+            imageUrl: req.imageUrl 
+        })
         await newPost.reload(postIncludes)
         res.json(newPost)
     } catch (e) {
