@@ -14,6 +14,7 @@ export default async function fileUploader(req: Request, res: Response, next: Ne
 
     const { mimetype , data, name} = req.files.image as UploadedFile
 
+    
     const upload = new Upload({
         client: s3Client,
         params: {
