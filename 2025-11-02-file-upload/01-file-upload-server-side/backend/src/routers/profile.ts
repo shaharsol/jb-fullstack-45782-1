@@ -4,13 +4,14 @@ import validation from "../middlewares/validation";
 import { getPostValidator, newPostValidator, updatePostValidator } from "../controllers/profile/validator";
 import paramValidation from "../middlewares/param-validation";
 import enforceAuth from "../middlewares/enforce-auth";
+import fileUploader from "../middlewares/file-uploader";
 
 const router = Router()
 // DELETE /profile/1
 router.get('/', getProfile)
 router.get('/:id', paramValidation(getPostValidator), getPost)
 router.delete('/:id', deletePost)
-router.post('/', validation(newPostValidator), createPost)
+router.post('/', validation(newPostValidator), fileUploader , createPost)
 router.patch('/:id', validation(updatePostValidator), updatePost)
 
 
