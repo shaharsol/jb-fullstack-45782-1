@@ -5,6 +5,12 @@ export const newPostValidator = Joi.object({
     body: Joi.string().min(20).required()
 })
 
+export const newPostImageValidator = Joi.object({
+    image: Joi.object({
+        mimetype: Joi.string().valid('image/jpeg', 'image/png')
+    }).unknown(true).optional()
+})
+
 export const updatePostValidator = newPostValidator
 
 export const getPostValidator = Joi.object({
