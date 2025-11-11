@@ -1,0 +1,48 @@
+.Post {
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed lightcoral;
+    margin: 6px;
+}
+
+.Post img {
+    height: 50px;
+}
+
+.Post div:nth-child(2) {
+    text-decoration: underline;
+}
+
+.Post div:nth-child(3) {
+    padding: 12px 0px;
+}
+
+.new-post {
+    animation-name: paintYellow;
+    animation-duration: 4s;
+    /* Total animation duration */
+    animation-fill-mode: forwards;
+    /* Keep the final state after animation */
+}
+
+@keyframes paintYellow {
+    0% {
+        background-color: initial;
+        /* Or your starting color */
+    }
+
+    25% {
+        background-color: yellow;
+        /* Start turning yellow */
+    }
+
+    75% {
+        background-color: yellow;
+        /* Stay yellow */
+    }
+
+    100% {
+        background-color: initial;
+        /* Or your ending color, fades back */
+    }
+}
