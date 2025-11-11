@@ -1,5 +1,10 @@
 {
     "db": {
         "host": "database"
+    },
+    "s3": {
+        "connection": {
+            "endpoint": "http://localstack:4566"
+        }
     }
 }

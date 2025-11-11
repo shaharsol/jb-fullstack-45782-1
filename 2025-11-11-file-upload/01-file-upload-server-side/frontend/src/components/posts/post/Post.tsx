@@ -57,7 +57,7 @@ export default function Post(props: PostProps) {
             <div><h3>{title}</h3></div>
             <div>{(new Date(createdAt)).toLocaleDateString()} by {name}</div>
             <div>{body}</div>
-            {imageUrl && <div><img src={imageUrl} /></div>}
+            {imageUrl && <div><img src={`${import.meta.env.VITE_S3_URL}${imageUrl}`} /></div>}
             {/* conditional rendering (render something depending on a boolean value):  */}
             {isEditAllowed && <div>
                 <button onClick={removeMe}>Delete</button><button onClick={editMe}>Edit</button>

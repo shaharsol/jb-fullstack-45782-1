@@ -15,6 +15,7 @@ export async function getProfile(req: Request, res: Response, next: NextFunction
                 ...postIncludes
             }]
         })
+        
         res.json(posts)
     } catch (e) {
         next(e)

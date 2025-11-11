@@ -5,6 +5,7 @@ import config from 'config'
 import { UploadedFile } from "express-fileupload";
 import { randomUUID } from "crypto";
 import { extname } from "path";
+import { URL } from 'url'
 
 declare global {
     namespace Express {
@@ -33,6 +34,7 @@ export default async function fileUploader(req: Request, res: Response, next: Ne
     })
 
     const result = await upload.done()
-    req.imageUrl = result.Location
+    const url = new URL(result.Location)
+    req.imageUrl = url.pathname
     next()
 }
