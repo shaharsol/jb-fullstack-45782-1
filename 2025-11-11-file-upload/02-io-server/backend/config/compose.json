@@ -6,5 +6,8 @@
         "connection": {
             "endpoint": "http://localstack:4566"
         }
+    },
+    "io": {
+        "host": "io"
     }
 }
