@@ -1,0 +1,10 @@
+{
+    "s3": {
+        "isLocalStack": false,
+        "connection": {
+            "credentials": {
+                "accessKeyId": "AKIAXLEKZJVV6ENHCHO4"
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "socket-enums-shaharsolllllll",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/socket-enums.js",
+  "types": "./dist/socket-enums.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
