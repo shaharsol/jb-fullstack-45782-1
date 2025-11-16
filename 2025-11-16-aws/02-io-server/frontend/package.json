@@ -7,6 +7,7 @@
         "dev": "vite",
         "docker": "vite --mode docker",
         "build:compose": "tsc -b && vite build --mode compose",
+        "build:aws": "tsc -b && vite build --mode aws",
         "build": "tsc -b && vite build",
         "qa": "tsc -b && vite build --mode qa",
         "lint": "eslint .",

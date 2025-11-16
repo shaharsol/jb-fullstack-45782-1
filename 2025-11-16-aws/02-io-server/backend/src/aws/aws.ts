@@ -4,7 +4,7 @@ import config from 'config'
 
 const s3Connection = JSON.parse(JSON.stringify(config.get<object>('s3.connection')))
 
-if (!config.get<boolean>('s3.isLocalStack')) delete s3Connection.connection.endpoint;
+if (!config.get<boolean>('s3.isLocalStack')) delete s3Connection.endpoint;
 
 const s3Client = new S3Client(s3Connection)
 

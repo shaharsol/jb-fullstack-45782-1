@@ -1,4 +1,7 @@
 {
+    "db": {
+        "host": "database"
+    },
     "s3": {
         "isLocalStack": false,
         "connection": {
@@ -6,5 +9,8 @@
                 "accessKeyId": "AKIAXLEKZJVV6ENHCHO4"
             }
         }
+    },
+    "io": {
+        "host": "io"
     }
 }
