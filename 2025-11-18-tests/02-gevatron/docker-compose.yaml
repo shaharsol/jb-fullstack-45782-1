@@ -1,0 +1,65 @@
+version: '3.8'
+
+# services - here i am going to list containers that i want to build
+# each service, actually describes a docker run command
+services:
+  # docker run --name weezer-db -d -e MYSQL_ALLOW_EMPTY_PASSWORD=1 -e MYSQL_DATABASE=weezer -e MYSQL_TCP_PORT=3306 -p 3308:3306 shaharsol/weezer-db:1.0.0
+  database:
+    container_name: weezer-db-compose
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+      - MYSQL_DATABASE=weezer
+      - MYSQL_TCP_PORT=3306
+    ports:
+      - "3309:3306"
+    #image: shaharsol/weezer-db:1.0.0
+    build: ./database
+    volumes:
+      - weezerdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+  
+  # docker run --name weezer-backend -d -e NODE_ENV=docker  -p 3010:3000 shaharsol/weezer-backend:3.0.0
+  backend:
+    container_name: weezer-backend-compose
+    environment:
+      - NODE_ENV=compose
+    ports:
+      - "3020:3000"
+    build: ./backend
+    depends_on:
+      database:
+        condition: service_healthy
+
+  io:
+    container_name: weezer-io-compose
+    ports:
+      - "3022:3004"
+    build: ./io
+
+# docker run --name weezer-frontend -d -p 3011:5173 shaharsol/weezer-frontend:1.0.1
+  frontend:
+    container_name: weezer-frontend-compose
+    ports: 
+      - 3012:80
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.compose
+
+# docker run --name localstack -d -p 4566:4566 -p 4510-4559:4510-4559 -v golan:/var/lib/localstack -e PERSISTENCE=1 localstack/localstack
+  localstack:
+    container_name: weezer-localstack-compose
+    ports:
+      - 4566:4566
+      - 4510-4559:4510-4559
+    image: localstack/localstack
+    volumes:
+      - s3localdata:/var/lib/localstack
+
+volumes:
+  s3localdata:
+  weezerdata:
