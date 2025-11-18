@@ -18,9 +18,9 @@ describe('unit testing for all auth controller functions', () => {
         test('different plain text generates different hash', () => {
             const plainTextPassword1 = randomUUID()
             const plainTextPassword2 = randomUUID()
-            expect(plainTextPassword1).not.toEqual(plainTextPassword2)           
             const result1 = hashAndSaltPassword(plainTextPassword1)
             const result2 = hashAndSaltPassword(plainTextPassword2)
+            expect(plainTextPassword1).not.toEqual(plainTextPassword2)           
             expect(result1).not.toEqual(result2)
         })
     })    

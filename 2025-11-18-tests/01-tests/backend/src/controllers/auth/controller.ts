@@ -6,8 +6,8 @@ import { sign } from "jsonwebtoken";
 
 export function hashAndSaltPassword(plainTextPassword: string): string {
     const secret = config.get<string>('app.secret')
-    // return createHmac('sha256', secret).update(plainTextPassword).digest('hex')
-    return '7f7737fddd2842bc2afdbf1868aaa8e986b83133a1f010fe96535c15e4584628'
+    return createHmac('sha512', secret).update(plainTextPassword).digest('hex')
+    // return '7f7737fddd2842bc2afdbf1868aaa8e986b83133a1f010fe96535c15e4584628'
 }
 
 export async function signup(req: Request, res: Response, next: NextFunction) {
