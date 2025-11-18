@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "jest",
+        "test": "jest --localstorage-file=",
         "dev": "ts-node-dev src/app.ts",
         "build": "tsc",
         "start": "node ./dist/app.js"
@@ -29,6 +29,7 @@
         "socket.io-client": "^4.8.1"
     },
     "devDependencies": {
+        "@jest/globals": "^30.2.0",
         "@types/config": "^3.3.5",
         "@types/cors": "^2.8.19",
         "@types/express": "^5.0.3",
