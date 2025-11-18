@@ -23,9 +23,6 @@ describe('enforce auth unit testing', () => {
     test('calls next with status 401 when bearer keyword is mispelled', () => {
         // mocking
         const request = {
-            headers: {
-                authorization: 'Baerer eyfhjhgjkdfhkjgdfh'
-            },
             get: (key: string) => 'Baerer eyfhjhgjkdfhkjgdfh'
         } as Request
         const response = {} as Response
@@ -39,4 +36,21 @@ describe('enforce auth unit testing', () => {
 
         // [ [ {status: 401, message: ''} ] ]
     })
+    test('calls next with status 401 when jwt is missing', () => {
+        // mocking
+        const request = {
+            get: (key: string) => 'Baerer'
+        } as Request
+        const response = {} as Response
+        const next = jest.fn(err => {})
+        enforceAuth(request, response, next)
+        expect(next.mock.calls.length).toBe(1)
+        expect(next.mock.calls[0][0]).toEqual({
+            status: 401,
+            message: 'missing jwt'
+        })
+
+        // [ [ {status: 401, message: ''} ] ]
+    })
+
 })
