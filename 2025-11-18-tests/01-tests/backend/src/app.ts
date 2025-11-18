@@ -17,8 +17,6 @@ import fileUpload from 'express-fileupload';
 const app = express()
 
 
-const port = config.get<number>('app.port')
-const appName = config.get<string>('app.name')
 const secret = config.get<string>('app.secret')
 
 console.log(`app secret is ${secret}`)
@@ -45,7 +43,7 @@ app.use(logger)
 app.use(responder);
 
 
-(async () => {
+export async function start() {
     // synchronize database schema (not data) changes to the database
     // i.e syncs our TypeScript models folder into the actual SQL Schema
     // sequelize.sync({ force: true })
@@ -56,5 +54,7 @@ app.use(responder);
 
     console.log(process.argv)
 
-    app.listen(port, () => console.log(`${appName} started on port ${port}`))
-})()
+    // app.listen(port, () => console.log(`${appName} started on port ${port}`))
+}
+
+export default app
