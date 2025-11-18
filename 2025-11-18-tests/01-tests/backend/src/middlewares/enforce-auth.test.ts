@@ -6,11 +6,18 @@ describe('enforce auth unit testing', () => {
         // mocking
         const request = {
             headers: {
-            }
+            },
+            get: (key: string) => ''
         } as Request
         const response = {} as Response
         const next = jest.fn(err => {})
         enforceAuth(request, response, next)
         expect(next.mock.calls.length).toBe(1)
+        expect(next.mock.calls[0][0]).toEqual({
+            status: 401,
+            message: 'missing Bearer keyword'
+        })
+
+        // [ [ {status: 401, message: ''} ] ]
     })
 })
