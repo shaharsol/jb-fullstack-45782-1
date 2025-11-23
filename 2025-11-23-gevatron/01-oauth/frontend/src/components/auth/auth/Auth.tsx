@@ -1,5 +1,6 @@
-import { useState, type PropsWithChildren } from "react";
+import { useEffect, useState, type PropsWithChildren } from "react";
 import AuthContext from "./AuthContext";
+import { useSearchParams } from "react-router-dom";
 
 export default function Auth(props: PropsWithChildren) {
 
@@ -7,12 +8,18 @@ export default function Auth(props: PropsWithChildren) {
 
     const { children } = props;
 
-    useSearchParams
+    const [searchParams] = useSearchParams()
 
     function newJwt(jwt: string) {
         setJwt(jwt);
         localStorage.setItem('jwt', jwt);
     }
+
+    useEffect(() => {
+        if(searchParams.get('jwt')) {
+            newJwt(searchParams.get('jwt')!)
+        }
+    }, [searchParams])
 
     return (
         <AuthContext.Provider value={{ jwt, newJwt }}>
