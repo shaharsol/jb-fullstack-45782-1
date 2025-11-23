@@ -1,0 +1,16 @@
+{
+    "db": {
+        "host": "database"
+    },
+    "s3": {
+        "isLocalStack": false,
+        "connection": {
+            "credentials": {
+                "accessKeyId": "AKIAXLEKZJVV6ENHCHO4"
+            }
+        }
+    },
+    "io": {
+        "host": "io"
+    }
+}
